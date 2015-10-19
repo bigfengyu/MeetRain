@@ -1,0 +1,75 @@
+body, div, p, form, iframe, object, ul, ol, li, dl, dt, dd, span, em, strong, img, table, td, th, textarea, button, input, select, h1, h2, h3, h4, h5, h6 {
+    margin:0 auto;
+    padding:0;
+}
+
+a,li{
+    text-decoration: none;
+    list-style: none;
+    color:#333
+}
+a:hover{
+    color:#4073a2;
+}
+
+h2{
+    font-size: 24px;
+    display: inline;
+}
+
+
+.clear::after{
+    clear:both;
+    content: ".";
+    display: block;
+    height: 0;
+    visibility: hidden;
+}
+
+
+.left{
+    width: 640px;
+
+}
+
+.logo{
+    width:124px;
+    height: 63px;
+    display: inline-block;
+    background: url("../img/icon.png");
+}
+.header{
+    margin-top: 30px;
+}
+
+.nav-1{
+    margin-top:47px;
+    float: right;
+    bottom:7px;
+    color: #5c5c5c;
+}
+
+.nav-1 a{
+    font-size:14px;
+    padding:0 16px;
+    border-right: 1px solid rgb(209, 209, 209);
+}
+
+
+
+.header-sub{
+    margin-top:33px;
+    padding-left: 5px;
+    padding-bottom: 13px;
+    border-bottom: 1px solid #e2e2e2;
+}
+
+.nav-2 li{
+    font-size: 18px;
+    color: #666;
+    padding-right: 20px;;
+    display: block;
+    float:left;
+}
+
+

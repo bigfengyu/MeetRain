@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script type="text/javascript" src="{% static "js/jquery.js" %}"></script>
+    <link rel="stylesheet" href="{% static "css/index.css" %}">
+    <link rel="stylesheet" href="{% static "css/public.css" %}">
+</head>
+<body>
+    <div class="wrapper clear">
+        <div class="left">
+            <div class="header">
+                <div class="header-up">
+                    <a class="logo" href="/blog"></a>
+                    <div class="nav-1">
+                            <a href="/blog">首页</a>
+                            <a href="/admin">登陆</a>
+                            <a>腾讯网</a>
+                    </div>
+                </div>
+                <div class="header-sub clear">
+                    <ul class="nav-2">
+                        <li><a>文章</a></li>
+                        <li><a>谈资</a></li>
+                        <li><a>作者</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="cover">
+                <img src="{% static "img/cover.jpg" %}">
+                <div class="cover-title">
+
+                </div>
+                <div class="cover-subtitle">
+
+                </div>
+            </div>
+
+
+            <div class="items">
+                <!--620 x 210-->
+            {% for page in pages %}
+                <div class="page clear" >
+                    <a class="page-title" href="page/?id={{ page.id }}">
+                        {% if page.recommend %}
+                            <span class="rec">推荐</span>
+                        {% endif %}
+                        <h2>{{ page.title }}</h2>
+                    </a>
+                    <h3 class="page-subtitle">
+                        {{ page.subtitle }}
+                    </h3>
+                    <div class="page-sub">
+                        <div class="pic clear">
+                            <img width="192" src="{% static "img/page-sub.png"%}">  <!--192 x 113-->
+                        </div>
+                        <div class="summary">
+                            <p class="summary-up">
+                                {{ page.summary|safe }}
+                            </p>
+                            <div class="summary-sub">
+                                <span id="time">{{ page.date }}</span>
+                                <span id="readCnt">被浏览{{page.views}}次</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+            </div>
+        </div>
+
+    </div>
+</body>
+
+
+<script type="text/javascript" src="{% static "js/blog.js" %}"></script>
+
+</html>

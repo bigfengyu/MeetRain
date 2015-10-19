@@ -1,0 +1,38 @@
+
+.left{
+    padding-bottom: 50px;
+}
+.header-sub h1{
+    font: 26px/34px 'Microsoft YaHei';
+    color: #333;
+    text-align: left;
+    margin-bottom: 18px;
+}
+
+.header-sub .date{
+    font: 14px/18px 'Tahoma';
+    color: #ccc;
+    text-align: left;
+}
+
+.blog-content p{
+    font: 14px/25px 'Tahoma';
+    color: #333;
+    text-align: left;
+    text-indent: 28px;
+    margin-top: 20px;
+    word-break: normal;
+    word-wrap: break-word;
+    letter-spacing: 1px;
+}
+
+.blog-content{
+    padding: 10px 10px 20px 10px;
+}
+
+.page-subtitle{
+    font: 16px/18px "Microsoft YaHei";
+    color: #8A8A8A;
+    text-align: left;
+    margin-bottom: 18px;
+}
