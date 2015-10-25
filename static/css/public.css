@@ -1,14 +1,19 @@
 body, div, p, form, iframe, object, ul, ol, li, dl, dt, dd, span, em, strong, img, table, td, th, textarea, button, input, select, h1, h2, h3, h4, h5, h6 {
-    margin:0 auto;
+    margin:0;
     padding:0;
 }
 
-a,li{
+
+.wrapper,.left{
+    margin: 0 auto;
+}
+
+a,li,.btn{
     text-decoration: none;
     list-style: none;
     color:#333
 }
-a:hover{
+a:hover,.btn:hover{
     color:#4073a2;
 }
 
@@ -39,7 +44,7 @@ h2{
     background: url("../img/icon.png");
 }
 .header{
-    margin-top: 30px;
+    margin:30px 0;
 }
 
 .nav-1{
@@ -49,9 +54,14 @@ h2{
     color: #5c5c5c;
 }
 
-.nav-1 a{
+.nav-1 a:last-child{
     font-size:14px;
-    padding:0 16px;
+    padding-left:16px;
+}
+
+.nav-1 a:first-child{
+    font-size:14px;
+    padding-right:16px;
     border-right: 1px solid rgb(209, 209, 209);
 }
 
@@ -72,4 +82,14 @@ h2{
     float:left;
 }
 
+.footer{
+    padding:100px 0 70px 0;
+    font: 12px/22px 'Tahoma';
+    color: #BDBDBD;
+    text-align: center;
+}
+
+.footer a{
+    color: #8A8A8A;
+}
 

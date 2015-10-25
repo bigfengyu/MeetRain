@@ -1,35 +1,10 @@
-<!DOCTYPE html>
+{% extends 'blog/base.html' %}
 {% load staticfiles %}
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <script type="text/javascript" src="{% static "js/jquery.js" %}"></script>
-    <link rel="stylesheet" href="{% static "css/page.css"%}">
-    <link rel="stylesheet" href="{% static "css/public.css" %}">
-</head>
-<body>
-     <div class="wrapper clear">
-        <div class="left">
-            <div class="header">
-                <div class="header-up">
-                    <a class="logo" href="/blog"></a>
-                    <div class="nav-1">
-                            <a href="/blog">首页</a>
-                            <a href="/admin">登陆</a>
-                            <a>腾讯网</a>
-                    </div>
-                </div>
-                <div class="header-sub">
-                    <h1>{{ page.title }}</h1>
-                    <h2 class="page-subtitle">{{  page.subtitle }}</h2>
-                    <h3 class="date">{{ page.date }}</h3>
-                </div>
-            </div>
-            <div class="blog-content">
-                {{ page.content_safe }}
-            </div>
-        </div>
-
+{% block css %}
+    <link rel="stylesheet" href="{% static "css/page.css" %}">
+{% endblock %}
+{% block main %}
+    <div class="blog-content">
+        {{ page.content_safe }}
     </div>
-</body>
-</html>
+{% endblock %}

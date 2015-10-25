@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script type="text/javascript" src="{% static "js/jquery.js" %}"></script>
+    <link rel="stylesheet" href="{% static "css/public.css" %}">
+    {% block css %}
+    {% endblock %}
+    {% block js_head %}
+    {% endblock %}
+
+
+</head>
+<body>
+    <div class="wrapper clear">
+        <div class="left">
+            <div class="header">
+                <div class="header-up">
+                    <a class="logo" href="/blog"></a>
+                    <div class="nav-1">
+                            <a href="/blog">首页</a>
+                            <a href="/admin">登陆</a>
+                    </div>
+                </div>
+                <div class="header-sub clear">
+                    <ul class="nav-2">
+                        <li><a href="/blog">文章</a></li>
+                        <li><a href="/blog/tags">目录</a></li>
+                        <li><a>关于</a></li>
+                    </ul>
+                </div>
+            </div>
+            {% block main %}
+            {% endblock %}
+
+            <div class="footer">
+                <div class="poweredby">由<a href="http://www.djangoproject.com"> Django </a>疲惫驱动</div>
+                <div class="theme">样式窃于 <a href="http://dajia.qq.com">腾讯大家</a> </div>
+            </div>
+        </div>
+
+    </div>
+</body>
+
+{% block js_end %}
+{% endblock %}
+
+
+</html>

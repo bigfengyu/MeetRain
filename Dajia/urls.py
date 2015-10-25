@@ -17,10 +17,14 @@ from django.conf.urls import include, url
 from django.contrib import admin
 
 # handler404 = 'blog.views.notfound'
+from django.conf.urls.static import static
+from django.conf import settings
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^blog/',include('blog.urls')),
-
-
+    url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {
+        'document_root': settings.MEDIA_ROOT}),
+    url('^markdown/', include( 'django_markdown.urls')),
 ]
+

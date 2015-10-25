@@ -19,7 +19,17 @@
     font: 14px/25px 'Tahoma';
     color: #333;
     text-align: left;
-    text-indent: 28px;
+    margin-top: 20px;
+    word-break: normal;
+    word-wrap: break-word;
+    letter-spacing: 1px;
+}
+
+.blog-content strong,h2{
+    font: 14px/25px 'Tahoma';
+    color: #000;
+    font-weight: bold;
+    text-align: left;
     margin-top: 20px;
     word-break: normal;
     word-wrap: break-word;
@@ -35,4 +45,8 @@
     color: #8A8A8A;
     text-align: left;
     margin-bottom: 18px;
+}
+
+.blog-content img{
+    width:640px;
 }
