@@ -16,7 +16,7 @@
 }
 
 .blog-content p{
-    font: 14px/25px 'Tahoma';
+    font: 14px/25px "lucida grande", "lucida sans unicode", lucida, helvetica, "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
     color: #333;
     text-align: left;
     margin-top: 20px;

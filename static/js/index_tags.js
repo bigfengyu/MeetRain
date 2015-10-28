@@ -17,10 +17,31 @@ var getMorePagesInTags = function(){$(".get_more")
                 return function(data,status){
                         var e = $(data);
                         e.hide();
-                        $(that).siblings('.overview').append(e);
-                        e.slideDown("slow").css("display","block");
+                        var overview = $(that).siblings('.overview');
+                        overview.append(e);
+                        e.slideDown("slow");
+                        setTimeout(function () {
+                            if(overview.find('.empty').size()){
+                                $(that).hide();
+                                $(that).next().show();
+                            }
+                        },500);
+
                     };
             }(this)
     )})};
 
+var recoverInTags = function(){$(".recover")
+    .click(function () {
+        var overview = $(this).siblings('.overview');
+        var container = overview.children().slice(3).slideUp('slow');
+        setTimeout(function() {
+            container.remove();
+        },600)
+        $(this).hide().prev().show();
+    })
+    
+}
+
 getMorePagesInTags();
+recoverInTags();

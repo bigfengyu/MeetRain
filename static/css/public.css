@@ -4,6 +4,8 @@ body, div, p, form, iframe, object, ul, ol, li, dl, dt, dd, span, em, strong, im
 }
 
 
+
+
 .wrapper,.left{
     margin: 0 auto;
 }
@@ -20,6 +22,10 @@ a:hover,.btn:hover{
 h2{
     font-size: 24px;
     display: inline;
+}
+
+p{
+    font-size: 5px;
 }
 
 

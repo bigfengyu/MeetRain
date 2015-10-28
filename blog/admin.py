@@ -1,5 +1,6 @@
 from django.contrib import admin
-from blog.models import Page,PageImage,Category,Test
+from blog.models import *
+from django.utils import timezone
 from django import forms
 from django.core.exceptions import ValidationError
 from django.forms.models import BaseInlineFormSet
@@ -13,7 +14,6 @@ from django_markdown.admin import MarkdownModelAdmin
 
 class AdminForm(forms.ModelForm):
     class Meta:
-        # fields = ['title','subtitle','content','slug','date','views','summary']
         exclude = []
         model = Page
     def clean_slug(self):
@@ -21,6 +21,8 @@ class AdminForm(forms.ModelForm):
         if slug != '' and  Page.objects.filter(slug = slug).exists():
             raise ValidationError("the slug is duplicated!")
         return slug
+
+
 
 class PageImageInline(admin.TabularInline):
     form = AdminForm
@@ -31,12 +33,12 @@ class PageImageInline(admin.TabularInline):
 class PageCategoryInline(admin.TabularInline):
     form = AdminForm
     model = Category.pages.through
-    extra = 3
+    extra = 1
 
 class PageAdmin(admin.ModelAdmin):
     inlines = [PageImageInline,PageCategoryInline,]
     form = AdminForm
-    list_display = ['title','id','date','views']
+    list_display = ['title','id','date','views',]
 
 # class CategoryAdmin(admin.ModelAdmin):
 #     inlines = [PageCategoryInline,]
@@ -44,5 +46,3 @@ class PageAdmin(admin.ModelAdmin):
 admin.site.register(Page,PageAdmin)
 admin.site.register(Category)
 admin.site.register(PageImage)
-admin.site.register(Test, MarkdownModelAdmin)
-

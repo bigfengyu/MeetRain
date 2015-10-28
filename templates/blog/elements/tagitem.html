@@ -1,0 +1,37 @@
+{% load custom_tags %}
+<div class="tagitem row{{ forloop.counter }}" data-tag-id="{{ item.id }}">
+    <div class="tagnamewrapper" >
+        <div class="tagimage">
+        </div>
+    </div>
+    <div class="tagname">
+        <h1>{{ item.name }}</h1>
+    </div>
+    <div class="overview">
+        {% with pages=item.pages.all|ordered_by:"-id"%}
+            {% for page in pages|slice:":3" %}
+                <div class="pagelink">
+                    <a href="{{ page.get_url }}" page-id="{{ page.id }}">{{ page.title }}</a>
+                </div>
+                {% empty %}
+                     <p class="empty">空空如也</p>
+            {% endfor %}
+
+    </div>
+            {% if pages|length <= 3 and pages|length != 0 %}
+                <div class="no_more">
+                    <div class="border_top"></div>
+                    <p>No more</p>
+                </div>
+            {% else %}
+                <div class="get_more btn">
+                    <div class="border_top"></div>
+                    <p>More</p>
+                </div>
+            {% endif %}
+    <div class="recover btn">
+        <div class="border_top"></div>
+        <p>Collapse</p>
+    </div>
+        {% endwith %}
+</div>

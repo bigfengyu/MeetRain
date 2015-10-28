@@ -115,3 +115,4 @@ MEDIA_PATH = os.path.join(BASE_DIR,'media')
 
 STATICFILES_DIRS = (STATIC_PATH,)
 
+TIME_ZONE = 'Asia/Shanghai'

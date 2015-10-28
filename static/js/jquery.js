@@ -105,12 +105,12 @@ jQuery.fn = jQuery.prototype = {
 		return slice.call( this );
 	},
 
-	// Get the Nth element in the matched element set OR
-	// Get the whole matched element set as a clean array
+	// Get the Nth elements in the matched elements set OR
+	// Get the whole matched elements set as a clean array
 	get: function( num ) {
 		return num != null ?
 
-			// Return just the one element from the set
+			// Return just the one elements from the set
 			( num < 0 ? this[ num + this.length ] : this[ num ] ) :
 
 			// Return all the elements in a clean array
@@ -118,21 +118,21 @@ jQuery.fn = jQuery.prototype = {
 	},
 
 	// Take an array of elements and push it onto the stack
-	// (returning the new matched element set)
+	// (returning the new matched elements set)
 	pushStack: function( elems ) {
 
-		// Build a new jQuery matched element set
+		// Build a new jQuery matched elements set
 		var ret = jQuery.merge( this.constructor(), elems );
 
 		// Add the old object onto the stack (as a reference)
 		ret.prevObject = this;
 		ret.context = this.context;
 
-		// Return the newly-formed element set
+		// Return the newly-formed elements set
 		return ret;
 	},
 
-	// Execute a callback for every element in the matched set.
+	// Execute a callback for every elements in the matched set.
 	// (You can seed the arguments with an array of args, but this is
 	// only used internally.)
 	each: function( callback, args ) {
@@ -885,7 +885,7 @@ function markFunction( fn ) {
 }
 
 /**
- * Support testing using an element
+ * Support testing using an elements
  * @param {Function} fn Passed the created div and expects a boolean result
  */
 function assert( fn ) {
@@ -1006,7 +1006,7 @@ support = Sizzle.support = {};
 
 /**
  * Detects XML nodes
- * @param {Element|Object} elem An element or a document
+ * @param {Element|Object} elem An elements or a document
  * @returns {Boolean} True iff elem is a non-HTML XML node
  */
 isXML = Sizzle.isXML = function( elem ) {
@@ -1018,7 +1018,7 @@ isXML = Sizzle.isXML = function( elem ) {
 
 /**
  * Sets document-related variables once based on the current document
- * @param {Element|Object} [doc] An element or document object to use to set the document
+ * @param {Element|Object} [doc] An elements or document object to use to set the document
  * @returns {Object} Returns the current document
  */
 setDocument = Sizzle.setDocument = function( node ) {
@@ -1267,7 +1267,7 @@ setDocument = Sizzle.setDocument = function( node ) {
 
 	// Element contains another
 	// Purposefully does not implement inclusive descendent
-	// As in, an element does not contain itself
+	// As in, an elements does not contain itself
 	contains = hasCompare || rnative.test( docElem.contains ) ?
 		function( a, b ) {
 			var adown = a.nodeType === 9 ? a.documentElement : a,
@@ -1319,7 +1319,7 @@ setDocument = Sizzle.setDocument = function( node ) {
 		if ( compare & 1 ||
 			(!support.sortDetached && b.compareDocumentPosition( a ) === compare) ) {
 
-			// Choose the first element that is related to our preferred document
+			// Choose the first elements that is related to our preferred document
 			if ( a === doc || a.ownerDocument === preferredDoc && contains(preferredDoc, a) ) {
 				return -1;
 			}
@@ -1725,7 +1725,7 @@ Expr = Sizzle.selectors = {
 								}
 							}
 
-						// Use previously-cached element index if available
+						// Use previously-cached elements index if available
 						} else if ( useCache && (cache = (elem[ expando ] || (elem[ expando ] = {}))[ type ]) && cache[0] === dirruns ) {
 							diff = cache[1];
 
@@ -1736,7 +1736,7 @@ Expr = Sizzle.selectors = {
 								(diff = nodeIndex = 0) || start.pop()) ) {
 
 								if ( ( ofType ? node.nodeName.toLowerCase() === name : node.nodeType === 1 ) && ++diff ) {
-									// Cache the index of each encountered element
+									// Cache the index of each encountered elements
 									if ( useCache ) {
 										(node[ expando ] || (node[ expando ] = {}))[ type ] = [ dirruns, diff ];
 									}
@@ -1819,7 +1819,7 @@ Expr = Sizzle.selectors = {
 				function( elem, context, xml ) {
 					input[0] = elem;
 					matcher( input, null, xml, results );
-					// Don't keep the element (issue #299)
+					// Don't keep the elements (issue #299)
 					input[0] = null;
 					return !results.pop();
 				};
@@ -1838,11 +1838,11 @@ Expr = Sizzle.selectors = {
 			};
 		}),
 
-		// "Whether an element is represented by a :lang() selector
-		// is based solely on the element's language value
+		// "Whether an elements is represented by a :lang() selector
+		// is based solely on the elements's language value
 		// being equal to the identifier C,
 		// or beginning with the identifier C immediately followed by "-".
-		// The matching of C against the element's language value is performed case-insensitively.
+		// The matching of C against the elements's language value is performed case-insensitively.
 		// The identifier C does not have to be a valid language name."
 		// http://www.w3.org/TR/selectors/#lang-pseudo
 		"lang": markFunction( function( lang ) {
@@ -1909,7 +1909,7 @@ Expr = Sizzle.selectors = {
 		// Contents
 		"empty": function( elem ) {
 			// http://www.w3.org/TR/selectors/#empty-pseudo
-			// :empty is negated by element (1) or content nodes (text: 3; cdata: 4; entity ref: 5),
+			// :empty is negated by elements (1) or content nodes (text: 3; cdata: 4; entity ref: 5),
 			//   but not by others (comment: 8; processing instruction: 7; etc.)
 			// nodeType < 6 works because attributes (2) do not appear as children
 			for ( elem = elem.firstChild; elem; elem = elem.nextSibling ) {
@@ -2093,7 +2093,7 @@ function addCombinator( matcher, combinator, base ) {
 		doneName = done++;
 
 	return combinator.first ?
-		// Check against closest ancestor/preceding element
+		// Check against closest ancestor/preceding elements
 		function( elem, context, xml ) {
 			while ( (elem = elem[ dir ]) ) {
 				if ( elem.nodeType === 1 || checkNonElements ) {
@@ -2296,7 +2296,7 @@ function matcherFromTokens( tokens ) {
 				(checkContext = context).nodeType ?
 					matchContext( elem, context, xml ) :
 					matchAnyContext( elem, context, xml ) );
-			// Avoid hanging onto element (issue #299)
+			// Avoid hanging onto elements (issue #299)
 			checkContext = null;
 			return ret;
 		} ];
@@ -2319,7 +2319,7 @@ function matcherFromTokens( tokens ) {
 				return setMatcher(
 					i > 1 && elementMatcher( matchers ),
 					i > 1 && toSelector(
-						// If the preceding token was a descendant combinator, insert an implicit any-element `*`
+						// If the preceding token was a descendant combinator, insert an implicit any-elements `*`
 						tokens.slice( 0, i - 1 ).concat({ value: tokens[ i - 2 ].type === " " ? "*" : "" })
 					).replace( rtrim, "$1" ),
 					matcher,
@@ -2380,7 +2380,7 @@ function matcherFromGroupMatchers( elementMatchers, setMatchers ) {
 						matchedCount--;
 					}
 
-					// Lengthen the array for every element, matched or not
+					// Lengthen the array for every elements, matched or not
 					if ( seed ) {
 						unmatched.push( elem );
 					}
@@ -2396,7 +2396,7 @@ function matcherFromGroupMatchers( elementMatchers, setMatchers ) {
 				}
 
 				if ( seed ) {
-					// Reintegrate element matches to eliminate the need for sorting
+					// Reintegrate elements matches to eliminate the need for sorting
 					if ( matchedCount > 0 ) {
 						while ( i-- ) {
 							if ( !(unmatched[i] || setMatched[i]) ) {
@@ -2441,7 +2441,7 @@ compile = Sizzle.compile = function( selector, match /* Internal Use Only */ ) {
 		cached = compilerCache[ selector + " " ];
 
 	if ( !cached ) {
-		// Generate a function of recursive functions that can be used to check each element
+		// Generate a function of recursive functions that can be used to check each elements
 		if ( !match ) {
 			match = tokenize( selector );
 		}
@@ -2788,7 +2788,7 @@ var rootjQuery,
 					// Support: Blackberry 4.6
 					// gEBID returns nodes no longer in the document (#6963)
 					if ( elem && elem.parentNode ) {
-						// Inject the element directly into the jQuery object
+						// Inject the elements directly into the jQuery object
 						this.length = 1;
 						this[0] = elem;
 					}
@@ -2919,7 +2919,7 @@ jQuery.fn.extend({
 		return this.pushStack( matched.length > 1 ? jQuery.unique( matched ) : matched );
 	},
 
-	// Determine the position of an element within the set
+	// Determine the position of an elements within the set
 	index: function( elem ) {
 
 		// No argument, return index in parent
@@ -2932,10 +2932,10 @@ jQuery.fn.extend({
 			return indexOf.call( jQuery( elem ), this[ 0 ] );
 		}
 
-		// Locate the position of the desired element
+		// Locate the position of the desired elements
 		return indexOf.call( this,
 
-			// If it receives a jQuery object, the first element is used
+			// If it receives a jQuery object, the first elements is used
 			elem.jquery ? elem[ 0 ] : elem
 		);
 	},
@@ -3550,7 +3550,7 @@ Data.accepts = jQuery.acceptData;
 
 Data.prototype = {
 	key: function( owner ) {
-		// We can accept data for non-element nodes in modern browsers,
+		// We can accept data for non-elements nodes in modern browsers,
 		// but we should not, see #8335.
 		// Always return the key for a frozen object.
 		if ( !Data.accepts( owner ) ) {
@@ -3819,8 +3819,8 @@ jQuery.fn.extend({
 			var data,
 				camelKey = jQuery.camelCase( key );
 
-			// The calling jQuery object (element matches) is not empty
-			// (and therefore has an element appears at this[ 0 ]) and the
+			// The calling jQuery object (elements matches) is not empty
+			// (and therefore has an elements appears at this[ 0 ]) and the
 			// `value` parameter was not undefined. An empty jQuery object
 			// will result in `undefined` for elem = this[ 0 ] which will
 			// throw an exception if an attempt to read a data cache is made.
@@ -4017,7 +4017,7 @@ var cssExpand = [ "Top", "Right", "Bottom", "Left" ];
 
 var isHidden = function( elem, el ) {
 		// isHidden might be called from jQuery#filter function;
-		// in that case, element will be second argument
+		// in that case, elements will be second argument
 		elem = el || elem;
 		return jQuery.css( elem, "display" ) === "none" || !jQuery.contains( elem.ownerDocument, elem );
 	};
@@ -4109,7 +4109,7 @@ jQuery.event = {
 			handler.guid = jQuery.guid++;
 		}
 
-		// Init the element's event structure and main handler, if this is the first
+		// Init the elements's event structure and main handler, if this is the first
 		if ( !(events = elemData.events) ) {
 			events = elemData.events = {};
 		}
@@ -4177,7 +4177,7 @@ jQuery.event = {
 				}
 			}
 
-			// Add to the element's handler list, delegates in front
+			// Add to the elements's handler list, delegates in front
 			if ( selector ) {
 				handlers.splice( handlers.delegateCount++, 0, handleObj );
 			} else {
@@ -4190,7 +4190,7 @@ jQuery.event = {
 
 	},
 
-	// Detach an event or set of events from an element
+	// Detach an event or set of events from an elements
 	remove: function( elem, types, handler, selector, mappedTypes ) {
 
 		var j, origCount, tmp,
@@ -4210,7 +4210,7 @@ jQuery.event = {
 			type = origType = tmp[1];
 			namespaces = ( tmp[2] || "" ).split( "." ).sort();
 
-			// Unbind all events (on this namespace, if provided) for the element
+			// Unbind all events (on this namespace, if provided) for the elements
 			if ( !type ) {
 				for ( type in events ) {
 					jQuery.event.remove( elem, type + types[ t ], handler, selector, true );
@@ -5139,7 +5139,7 @@ jQuery.extend({
 		while ( (elem = nodes[ i++ ]) ) {
 
 			// #4087 - If origin and destination elements are the same, and this is
-			// that element, do not do anything
+			// that elements, do not do anything
 			if ( selection && jQuery.inArray( elem, selection ) !== -1 ) {
 				continue;
 			}
@@ -5316,7 +5316,7 @@ jQuery.fn.extend({
 					for ( ; i < l; i++ ) {
 						elem = this[ i ] || {};
 
-						// Remove element nodes and prevent memory leaks
+						// Remove elements nodes and prevent memory leaks
 						if ( elem.nodeType === 1 ) {
 							jQuery.cleanData( getAll( elem, false ) );
 							elem.innerHTML = value;
@@ -5338,7 +5338,7 @@ jQuery.fn.extend({
 	replaceWith: function() {
 		var arg = arguments[ 0 ];
 
-		// Make the changes, replacing each context element with the new content
+		// Make the changes, replacing each context elements with the new content
 		this.domManip( arguments, function( elem ) {
 			arg = this.parentNode;
 
@@ -5476,8 +5476,8 @@ var iframe,
 	elemdisplay = {};
 
 /**
- * Retrieve the actual display of a element
- * @param {String} name nodeName of the element
+ * Retrieve the actual display of a elements
+ * @param {String} name nodeName of the elements
  * @param {Object} doc Document object
  */
 // Called only from within defaultDisplay
@@ -5485,22 +5485,22 @@ function actualDisplay( name, doc ) {
 	var style,
 		elem = jQuery( doc.createElement( name ) ).appendTo( doc.body ),
 
-		// getDefaultComputedStyle might be reliably used only on attached element
+		// getDefaultComputedStyle might be reliably used only on attached elements
 		display = window.getDefaultComputedStyle && ( style = window.getDefaultComputedStyle( elem[ 0 ] ) ) ?
 
 			// Use of this method is a temporary fix (more like optimization) until something better comes along,
 			// since it was removed from specification and supported only in FF
 			style.display : jQuery.css( elem[ 0 ], "display" );
 
-	// We don't have any data stored on the element,
-	// so use "detach" method as fast way to get rid of the element
+	// We don't have any data stored on the elements,
+	// so use "detach" method as fast way to get rid of the elements
 	elem.detach();
 
 	return display;
 }
 
 /**
- * Try to determine the default display value of an element
+ * Try to determine the default display value of an elements
  * @param {String} nodeName
  */
 function defaultDisplay( nodeName ) {
@@ -5627,7 +5627,7 @@ function addGetHookIf( conditionFn, hookFn ) {
 	}
 
 	// Support: IE9-11+
-	// Style of cloned element affects source element cloned (#8908)
+	// Style of cloned elements affects source elements cloned (#8908)
 	div.style.backgroundClip = "content-box";
 	div.cloneNode( true ).style.backgroundClip = "";
 	support.clearCloneStyle = div.style.backgroundClip === "content-box";
@@ -5871,7 +5871,7 @@ function showHide( elements, show ) {
 		values[ index ] = data_priv.get( elem, "olddisplay" );
 		display = elem.style.display;
 		if ( show ) {
-			// Reset the inline display of this element to learn if it is
+			// Reset the inline display of this elements to learn if it is
 			// being hidden by cascaded rules or not
 			if ( !values[ index ] && display === "none" ) {
 				elem.style.display = "";
@@ -5879,7 +5879,7 @@ function showHide( elements, show ) {
 
 			// Set elements which have been overridden with display: none
 			// in a stylesheet to whatever the default browser style is
-			// for such an element
+			// for such an elements
 			if ( elem.style.display === "" && isHidden( elem ) ) {
 				values[ index ] = data_priv.access( elem, "olddisplay", defaultDisplay(elem.nodeName) );
 			}
@@ -7290,7 +7290,7 @@ jQuery.fn.extend({
 					data_priv.set( this, "__className__", this.className );
 				}
 
-				// If the element has a class name or if we're passed `false`,
+				// If the elements has a class name or if we're passed `false`,
 				// then remove the whole classname (if there was one, the above saved it).
 				// Otherwise bring back whatever was previously saved (if anything),
 				// falling back to the empty string if nothing was stored.
@@ -8912,7 +8912,7 @@ jQuery.expr.filters.animated = function( elem ) {
 var docElem = window.document.documentElement;
 
 /**
- * Gets a window from an element
+ * Gets a window from an elements
  */
 function getWindow( elem ) {
 	return jQuery.isWindow( elem ) ? elem : elem.nodeType === 9 && elem.defaultView;
@@ -9035,7 +9035,7 @@ jQuery.fn.extend({
 			parentOffset.left += jQuery.css( offsetParent[ 0 ], "borderLeftWidth", true );
 		}
 
-		// Subtract parent offsets and element margins
+		// Subtract parent offsets and elements margins
 		return {
 			top: offset.top - parentOffset.top - jQuery.css( elem, "marginTop", true ),
 			left: offset.left - parentOffset.left - jQuery.css( elem, "marginLeft", true )
@@ -9133,10 +9133,10 @@ jQuery.each( { Height: "height", Width: "width" }, function( name, type ) {
 				}
 
 				return value === undefined ?
-					// Get width or height on the element, requesting but not forcing parseFloat
+					// Get width or height on the elements, requesting but not forcing parseFloat
 					jQuery.css( elem, type, extra ) :
 
-					// Set width or height on the element
+					// Set width or height on the elements
 					jQuery.style( elem, type, value, extra );
 			}, type, chainable ? margin : undefined, chainable, null );
 		};
@@ -9144,7 +9144,7 @@ jQuery.each( { Height: "height", Width: "width" }, function( name, type ) {
 });
 
 
-// The number of elements contained in the matched element set
+// The number of elements contained in the matched elements set
 jQuery.fn.size = function() {
 	return this.length;
 };

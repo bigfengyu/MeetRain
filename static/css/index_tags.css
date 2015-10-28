@@ -1,4 +1,26 @@
+.taglist{
+    font-size: 0;
+}
 
+.column{
+    vertical-align: top;
+    width: 300px;;
+    display: inline-block;
+}
+
+.column a,p{
+    font-family: 'STHeiti';
+    font-size: 16px;
+}
+
+.column h1{
+    font-size: 30px;
+}
+
+
+#col1{
+    margin-right: 40px;;
+}
 
 .tagitem{
     vertical-align: top;
@@ -37,7 +59,7 @@
     color: #FFFFFF;
     text-align: center;
     pointer-events:none;
-    font-weight: 200;
+    font-weight: normal;
 }
 
 .overview:after{
@@ -48,17 +70,20 @@
 }
 
 .overview{
+    min-height: 108px;
     padding-top:30px;
     background-color: #fafafa;
 }
 
-.overview .pagelink,p{
+.overview .pagelink{
     text-align: center;
     margin-bottom: 20px;
 }
 
 
 .empty{
+    margin-bottom: 20px;
+    text-align: center;
     font-size: 15px;
     color: #8A8A8A;
 }
@@ -71,35 +96,45 @@
     left: 100px;
 }
 
-.get_more {
+.get_more,.recover,.no_more {
     position: relative;
     display: block;
     background-color: #fafafa;
     text-align: center;
-    padding:10px 10px 10px 10px;
+    padding: 14px 10px 14px 10px;
+    vertical-align: middle;
 }
 
-.get_more:hover{
+
+.get_more:hover,.recover:hover{
     background-color: #e1e1e1;
 }
 
+.no_more{
+    color: #8A8A8A;
+}
 
-#tag1 .tagimage{
+.recover{
+    display: none;
+}
+
+
+.col1 .row1 .tagimage{
     background: url("../img/coder.jpg") -441px -42px no-repeat;
 
 }
 
-#tag1 .tagimage:hover{
+.col1 .row1 .tagimage:hover{
     background-position: -300px -100px;
     transition:background-position 0.5s linear,opacity 0.5s linear;
     opacity: 1;
 }
 
-#tag2 .tagimage{
+.col2 .row1 .tagimage{
     background: url("../img/kiss.jpg") -20px 0 no-repeat;
 }
 
-#tag2 .tagimage:hover{
+.col2 .row1 .tagimage:hover{
     background-position: -90px 0;
     transition:background-position 0.5s linear,opacity 0.5s linear;
     opacity: 1;

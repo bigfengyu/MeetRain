@@ -1,0 +1,28 @@
+{% extends 'blog/base.html' %}
+{% load  staticfiles %}
+{% block css %}
+    <link rel="stylesheet" href="{% static "css/index_pages.css" %}">
+{% endblock %}
+{% block main %}
+    <div class="cover">
+        <img src="{% static "img/cover.jpg" %}">
+        <div class="cover-title">
+
+        </div>
+        <div class="cover-subtitle">
+
+        </div>
+    </div>
+
+
+    <div class="items">
+        <!--620 x 210-->
+        {% include "blog/elements/pageitem.html" %}
+
+    </div>
+    <button class="get_more btn">更多</button>
+{% endblock %}
+
+{% block js_end %}
+    <script type="text/javascript" src="{% static "js/index_pages.js" %}"></script>
+{% endblock %}
