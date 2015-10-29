@@ -1,10 +1,10 @@
-{% extends 'blog/base.html' %}
+{% extends 'blog/index_base.html' %}
 {% load  staticfiles %}
 {% block css %}
     <link rel="stylesheet" href="{% static "css/index_pages.css" %}">
 {% endblock %}
 {% block main %}
-    <div class="cover">
+    <a class="cover">
         <img src="{% static "img/cover.jpg" %}">
         <div class="cover-title">
 
@@ -12,7 +12,10 @@
         <div class="cover-subtitle">
 
         </div>
-    </div>
+        <div class="cover-title">
+            你好，世界
+        </div>
+    </a>
 
 
     <div class="items">

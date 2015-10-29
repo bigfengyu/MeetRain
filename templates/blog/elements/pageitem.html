@@ -1,7 +1,7 @@
 {% load staticfiles %}
 {% for page in pages %}
     <div class="page clear" id="{{ page.id }}">
-        <a class="page-title" href="{{ page.get_url }}">
+        <a class="page-title clear" href="{{ page.get_url }}">
             {% if page.isTopping %}
                 <span class="rec">置顶</span>
                 {% elif page.recommend %}

@@ -19,10 +19,6 @@ a:hover,.btn:hover{
     color:#4073a2;
 }
 
-h2{
-    font-size: 24px;
-    display: inline;
-}
 
 p{
     font-size: 5px;
@@ -44,8 +40,8 @@ p{
 }
 
 .logo{
-    width:124px;
-    height: 63px;
+    width:91px;
+    height: 46px;
     display: inline-block;
     background: url("../img/icon.png");
 }
@@ -54,21 +50,26 @@ p{
 }
 
 .nav-1{
-    margin-top:47px;
+    font-size: 0;
+    margin-top:32px;
     float: right;
     bottom:7px;
     color: #5c5c5c;
 }
 
+
 .nav-1 a:last-child{
     font-size:14px;
-    padding-left:16px;
+    padding-left: 16px;
+    padding-right: 0;
+    border-right: none;
 }
 
-.nav-1 a:first-child{
+.nav-1 a{
+    font: 14px/18px 'Tahoma';
     font-size:14px;
-    padding-right:16px;
-    border-right: 1px solid rgb(209, 209, 209);
+    padding: 0 16px;
+    border-right: 1px #E6E6E6 solid;
 }
 
 

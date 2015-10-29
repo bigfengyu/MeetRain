@@ -1,10 +1,24 @@
 
 .cover{
+    position: relative;
+    display: block;
     margin-bottom: 5px;
 }
 .cover img{
     height: 275px;
     width: 640px;
+}
+
+.cover-title{
+    position: absolute;
+    left: 32px;
+    bottom: 42px;
+    font: 26px/28px 'Microsoft YaHei';
+    color: #fff;
+    padding: 8px;
+    background: rgba(0,0,0,0.6);
+    background: #333\0;
+    white-space: nowrap;
 }
 
 .items{
@@ -81,6 +95,17 @@
 .get_more:hover{
     background: #fafafa;
 }
+
+.page-title h2{
+    font-size: 24px;
+    display: inline;
+}
+
+.page-title{
+    margin-bottom: 6px;
+    display: block;
+}
+
 
 #readCnt{
     margin-left: 3px;

@@ -18,7 +18,7 @@ class AdminForm(forms.ModelForm):
         model = Page
     def clean_slug(self):
         slug = self.cleaned_data['slug']
-        if slug != '' and  Page.objects.filter(slug = slug).exists():
+        if self.instance.slug != slug and slug != '' and  Page.objects.filter(slug = slug).exists():
             raise ValidationError("the slug is duplicated!")
         return slug
 
@@ -46,3 +46,4 @@ class PageAdmin(admin.ModelAdmin):
 admin.site.register(Page,PageAdmin)
 admin.site.register(Category)
 admin.site.register(PageImage)
+admin.site.register(IndexCover)

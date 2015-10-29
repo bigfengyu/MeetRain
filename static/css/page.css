@@ -2,11 +2,23 @@
 .left{
     padding-bottom: 50px;
 }
-.header-sub h1{
+
+.title h1{
     font: 26px/34px 'Microsoft YaHei';
     color: #333;
     text-align: left;
     margin-bottom: 18px;
+}
+
+.title h2{
+    font: 16px/18px 'Microsoft YaHei';
+    color: #8A8A8A;
+    text-align: left;
+    margin-bottom: 18px;
+}
+
+.title{
+    border-bottom: 1px solid #e2e2e2;
 }
 
 .header-sub .date{
@@ -15,29 +27,42 @@
     text-align: left;
 }
 
-.blog-content p{
-    font: 14px/25px "lucida grande", "lucida sans unicode", lucida, helvetica, "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
+
+.text h2{
+    font-family: "Palatino Linotype", "Book Antiqua", Palatino, Helvetica, STKaiti, SimSun, serif;
+    font-size: 20px;
+    border-bottom: 1px solid #e2e2e2;
+    margin: 20px 0;
+}
+
+.text p{
+    font: 15px/25px "lucida grande", "lucida sans unicode", lucida, helvetica, "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
     color: #333;
     text-align: left;
-    margin-top: 20px;
+    margin: 10px 0;
     word-break: normal;
     word-wrap: break-word;
     letter-spacing: 1px;
+    /*text-indent: 30px;*/
 }
 
-.blog-content strong,h2{
-    font: 14px/25px 'Tahoma';
+.text strong,h2{
+    font-family:'Tahoma';
     color: #000;
     font-weight: bold;
     text-align: left;
-    margin-top: 20px;
     word-break: normal;
     word-wrap: break-word;
     letter-spacing: 1px;
 }
 
+
+.text strong{
+    font-size: 14px;
+}
+
 .blog-content{
-    padding: 10px 10px 20px 10px;
+    padding: 10px 0px 20px 0px;
 }
 
 .page-subtitle{

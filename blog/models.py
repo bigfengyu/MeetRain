@@ -7,6 +7,7 @@ import datetime
 from ckeditor.fields import RichTextField
 import random
 from Dajia.settings import MEDIA_PATH
+import os
 # Create your models here.
 
 # class Category(models.Model):
@@ -14,6 +15,7 @@ from Dajia.settings import MEDIA_PATH
 #     def __str__(self):
 #         return self.id.__str__()
 
+today = timezone.datetime.now()
 
 class Category(models.Model):
     order = models.IntegerField(verbose_name='顺序',blank=False,null=False,unique=True)
@@ -24,7 +26,8 @@ class Category(models.Model):
 
 class PageImage(models.Model):
     page = models.ForeignKey('Page',name='images')
-    image = models.ImageField(MEDIA_PATH+'/%Y/%m/%d')
+    image = models.ImageField(upload_to= os.path.join(MEDIA_PATH,today.year.__str__(),today.month.__str__(),today.day.__str__(
+    )))
 
 class Page(models.Model):
     title = models.CharField(max_length=128)
@@ -50,7 +53,9 @@ class Page(models.Model):
             self.summary = self.content[3:self.content.find('</p>')]
         super(Page,self).save()
 
-
+class IndexCover(models.Model):
+    page = models.OneToOneField('Page')
+    image = models.OneToOneField('PageImage')
 
 
 
