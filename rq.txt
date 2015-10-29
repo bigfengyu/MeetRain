@@ -4,7 +4,6 @@ django-grappelli==2.7.1
 django-markdown==0.8.4
 django-markdown-deux==1.0.5
 django-mptt==0.7.4
-duoshuo-python-sdk==0.1
 Markdown==2.6.2
 markdown2==2.3.0
 Pillow==3.0.0

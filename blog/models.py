@@ -7,7 +7,9 @@ import datetime
 from ckeditor.fields import RichTextField
 import random
 from Dajia.settings import MEDIA_PATH
+from django_markdown.models import MarkdownField
 import os
+from django.core.exceptions import ValidationError
 # Create your models here.
 
 # class Category(models.Model):
@@ -23,29 +25,34 @@ class Category(models.Model):
     pages = models.ManyToManyField('Page',related_name='categorys',blank=True,verbose_name='包含文章')
     def __str__(self):
         return self.name
+    # def delete(self, using=None):
+    #     if self.order == 0 or self.order == 1:
+    #         raise ValidationError("cannot delete top or rec record")
+    #     else:
+    #         super(Category,self).delete()
+
 
 class PageImage(models.Model):
-    page = models.ForeignKey('Page',name='images')
-    image = models.ImageField(upload_to= os.path.join(MEDIA_PATH,today.year.__str__(),today.month.__str__(),today.day.__str__(
-    )))
+    page = models.ForeignKey('Page',related_name='images',verbose_name='属于文章')
+    image = models.ImageField(upload_to="%y/%m/%d")
+
 
 class Page(models.Model):
     title = models.CharField(max_length=128)
     subtitle = models.CharField(max_length=128,blank=True)
-    content = RichTextField(blank=True)
+    content = MarkdownField()
     slug = models.SlugField(blank=True)
     date = models.DateField(default=timezone.now,verbose_name='创建时间',editable=False)
     views = models.PositiveIntegerField(default=0)
     summary = models.CharField(max_length=200,blank=True)
-    recommend = models.BooleanField(default=False,verbose_name='推荐')
-    topOutDate = models.DateField(default=datetime.date.today()-datetime.timedelta(days=1),
-                                  verbose_name='置顶到:')
     def get_url(self):
         return "/blog/page?id=" + str(self.id)
     def __str__(self):
         return self.title
     def isTopping(self):
-        return timezone.now().date() < self.topOutDate
+        return self.categorys.filter(order=0).exists()
+    def isRec(self):
+        return self.categorys.filter(order=1).exists()
     def content_safe(self):
         return mark_safe(self.content)
     def save(self):
@@ -55,7 +62,10 @@ class Page(models.Model):
 
 class IndexCover(models.Model):
     page = models.OneToOneField('Page')
-    image = models.OneToOneField('PageImage')
+    def imageurl(self):
+        return self.page.images.first().image.url
+    def __str__(self):
+        return self.page.title
 
 
 

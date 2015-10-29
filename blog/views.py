@@ -6,14 +6,29 @@ from itertools import chain
 # Create your views here.
 
 
+# def index(request):
+#     toppages = Page.objects.filter(topOutDate__gte=timezone.now).order_by('-id')[0:10]
+#     dict = {}
+#     if len(toppages) < 10:
+#         pages = Page.objects.filter(topOutDate__lt=timezone.now).order_by('-id')[0:10-len(toppages)]
+#         dict['pages']= chain(toppages,pages)
+#     else:
+#         dict['pages']= toppages
+#     return render(request, 'blog/index/index_pages.html',dict)
+
 def index(request):
-    toppages = Page.objects.filter(topOutDate__gte=timezone.now).order_by('-id')[0:10]
     dict = {}
-    if len(toppages) < 10:
-        pages = Page.objects.filter(topOutDate__lt=timezone.now).order_by('-id')[0:10-len(toppages)]
-        dict['pages']= chain(toppages,pages)
+    if Category.objects.filter(order=0).exists():
+        toppages = Category.objects.get(order=0).pages.all()
+        if len(toppages) < 10:
+            pages = Page.objects.exclude(categorys__order=0).order_by('-id')[0:10-len(toppages)]
+            dict['pages']= chain(toppages,pages)
+        else:
+            dict['pages']= toppages
     else:
-        dict['pages']= toppages
+        dict['pages'] = Page.objects.order_by('-id')[0:10]
+    cover = IndexCover.objects.last()
+    dict['cover'] = cover
     return render(request, 'blog/index/index_pages.html',dict)
 
 def pageid(request):

@@ -1,5 +1,6 @@
 {% extends 'blog/base.html' %}
 {% load staticfiles %}
+{% load markdown_deux_tags %}
 {% block css %}
     <link rel="stylesheet" href="{% static "css/page.css" %}">
 {% endblock %}
@@ -10,13 +11,13 @@
             <h2>{{ page.subtitle }}</h2>
             <h3></h3>
         </div>
-        <div class="text">
-            {{ page.content_safe }}
+        <div class="text" id="md">
+            {{ page.content_safe|markdown }}
         </div>
     </div>
     <div class="comment">
-        {% include 'blog/elements/disqus.html' %}
-{#        {% include "blog/elements/uyan.html" %}#}
+{#        {% include 'blog/elements/disqus.html' %}#}
+        {% include "blog/elements/uyan.html" %}
 
     </div>
 {% endblock %}

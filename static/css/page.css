@@ -17,8 +17,11 @@
     margin-bottom: 18px;
 }
 
+
+
 .title{
     border-bottom: 1px solid #e2e2e2;
+    margin-bottom: 30px;
 }
 
 .header-sub .date{
@@ -27,6 +30,12 @@
     text-align: left;
 }
 
+.text h1{
+    font-family: "Palatino Linotype", "Book Antiqua", Palatino, Helvetica, STKaiti, SimSun, serif;
+    font-size: 30px;
+    border-bottom: 1px solid #e2e2e2;
+    margin: 30px 0;
+}
 
 .text h2{
     font-family: "Palatino Linotype", "Book Antiqua", Palatino, Helvetica, STKaiti, SimSun, serif;
@@ -38,8 +47,8 @@
 .text p{
     font: 15px/25px "lucida grande", "lucida sans unicode", lucida, helvetica, "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
     color: #333;
-    text-align: left;
-    margin: 10px 0;
+    text-align: justify;
+    margin-bottom: 20px;
     word-break: normal;
     word-wrap: break-word;
     letter-spacing: 1px;

@@ -33,6 +33,9 @@ ALLOWED_HOSTS = [
 # Application definition
 
 INSTALLED_APPS = (
+    'markdown_deux',
+    'grappelli',
+    'django_markdown',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -42,7 +45,6 @@ INSTALLED_APPS = (
     'blog',
     'ckeditor',
     'mptt',
-    'django_markdown',
 
 )
 
@@ -116,3 +118,7 @@ MEDIA_PATH = os.path.join(BASE_DIR,'media')
 STATICFILES_DIRS = (STATIC_PATH,)
 
 TIME_ZONE = 'Asia/Shanghai'
+
+TEMPLATE_CONTEXT_PROCESSORS = (
+    "django.core.context_processors.request",
+)

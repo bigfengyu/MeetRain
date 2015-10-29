@@ -4,16 +4,10 @@
     <link rel="stylesheet" href="{% static "css/index_pages.css" %}">
 {% endblock %}
 {% block main %}
-    <a class="cover">
-        <img src="{% static "img/cover.jpg" %}">
+    <a class="cover" href="{{ cover.page.get_url }}">
+        <img src="{{ cover.imageurl }}">
         <div class="cover-title">
-
-        </div>
-        <div class="cover-subtitle">
-
-        </div>
-        <div class="cover-title">
-            你好，世界
+            {{ cover.page.title }}
         </div>
     </a>
 

@@ -21,6 +21,7 @@ from django.conf.urls.static import static
 from django.conf import settings
 
 urlpatterns = [
+    url(r'^grappelli/', include('grappelli.urls')),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^blog/',include('blog.urls')),
     url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {
