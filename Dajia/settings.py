@@ -97,7 +97,7 @@ DATABASES = {
         'NAME': 'blog',
         'USER': 'bigfeng',
         'PASSWORD': 'fengyu007',
-        'HOST': '',
+        'HOST': 'localhost',
         'PORT': '',
     }
 }
