@@ -6,7 +6,7 @@ import uuid
 import datetime
 from ckeditor.fields import RichTextField
 import random
-from Dajia.settings import MEDIA_PATH
+from MeetRain.settings import MEDIA_PATH
 from django_markdown.models import MarkdownField
 import os
 from django.core.exceptions import ValidationError
