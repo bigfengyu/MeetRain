@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'p$w&d77oi-y2=j)aopdni1%mg5m2cy(90r4m0!7e+%^l#(+lv&'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = [
     '*',
@@ -126,7 +126,6 @@ MEDIA_URL = '/media/'
 STATIC_ROOT = STATIC_PATH = os.path.join(BASE_DIR,'static')
 MEDIA_ROOT = MEDIA_PATH = os.path.join(BASE_DIR,'media')
 
-STATICFILES_DIRS = (STATIC_PATH,)
 
 TIME_ZONE = 'Asia/Shanghai'
 
