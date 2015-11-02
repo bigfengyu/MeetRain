@@ -23,9 +23,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'p$w&d77oi-y2=j)aopdni1%mg5m2cy(90r4m0!7e+%^l#(+lv&'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = [
+    'thingstable.com',
+    '114.215.139.60',
     '*',
 ]
 
@@ -41,7 +43,7 @@ INSTALLED_APPS = (
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib
+    'django.contrib.staticfiles',
     'blog',
     'ckeditor',
     'mptt',
@@ -123,8 +125,11 @@ USE_TZ = True
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 
-STATIC_ROOT = STATIC_PATH = os.path.join(BASE_DIR,'static')
-MEDIA_ROOT = MEDIA_PATH = os.path.join(BASE_DIR,'media')
+# STATIC_PATH = STATIC_ROOT  = os.path.join(BASE_DIR,'static')
+# MEDIA_PATH = EDIA_ROOT  = os.path.join(BASE_DIR,'media')
+
+STATIC_PATH = os.path.join(BASE_DIR,'static')
+MEDIA_PATH = os.path.join(BASE_DIR,'media')
 
 STATICFILES_DIRS = (STATIC_PATH,)
 
