@@ -1,8 +1,43 @@
 {% extends "blog/index_base.html" %}
 {% load staticfiles %}
+{% block css %}
+    <link rel="stylesheet" href="{% static "css/index_about.css" %}">
+    <link rel="stylesheet" href="{% static "css/page.css" %}">
 
+{% endblock %}
 {% block main %}
     <div class="container">
-
+    <div class="pt">
+        <div class="portrait"></div>
+    </div>
+    <div class="intro text">
+        <p>冯雨，在东北佳木斯长大到10岁因怕冷南迁至天津，后因高考再迁至合肥，目前是合肥工业大学在校学生。</p>
+        <p>这个人总把自己包装成一个有一些文艺情怀的读书人，每每在朋友圈分享也都只发民谣和长篇文章，其实他最得意的还是自己相比于其他职业的人能随手写两行代码实现他的一点点想法。</p>
+        <p>他时常陷入迷茫，不知道怎么把有限的智力和意志力花在刀刃上，现在他憋着留学但是没攒好GPA，憋着减肥却已经攒好了肚皮上的脂肪。</p>
+        <p>是一个十之八九的理想主义者，受冯雨他妈、冯雨他爸以及罗永浩的影响巨大。</p>
+        <p>死保守派，支持民主宪政法治市场经济，看重家庭，喜欢孩子，不支持婚前性行为，有点像美国南部共和党人，除了不歧视少数民族（因为他是锡伯族）以及不反感同性恋（因为他……放P，因为柴静老师的《看见》）。</p>
+        <p>这个博客是他利用Django写成的，前端模仿了<a target="_blank" href="http://dajia.qq.com">腾讯大家</a>，感谢。</p>
+        <p>他也爱这个世界。</p>
+    </div>
+    <div class="contact text">
+        <table>
+            <tr>
+                <td>QQ:</td>
+                <td>369892790</td>
+            </tr>
+            <tr>
+                <td>Mail:</td>
+                <td><a href="mailto:369892790@qq.com">369892790@qq.com</a></td>
+            </tr>
+            <tr>
+                <td>Weibo:</td>
+                <td><a target="_blank" href="http://weibo.com/lzzfeng">@阅读星</a></td>
+            </tr>
+        </table>
+    </div>
+    <div class="comment">
+        {% include 'blog/elements/uyan.html' %}
+    </div>
     </div>
 {% endblock %}
+

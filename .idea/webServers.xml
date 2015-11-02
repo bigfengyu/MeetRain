@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="f2ffa147-fa25-47d3-a816-e7d69851493e" name="ali" url="http://114.215.139.60">
+        <fileTransfer host="114.215.139.60" port="21" rootFolder="/home" password="dfc1dfcfdfc6dfcfdfc8dfc5dfd3df9adf9adf9d" username="fengyu">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

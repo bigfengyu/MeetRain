@@ -9,7 +9,7 @@
 }
 
 .column a,p{
-    font-family: 'STHeiti';
+    font-family: 'STHeiti','Microsoft YaHei';
     font-size: 16px;
 }
 
@@ -70,6 +70,7 @@
 }
 
 .overview{
+    position: relative;
     min-height: 108px;
     padding-top:30px;
     background-color: #fafafa;
@@ -82,11 +83,16 @@
 
 
 .empty{
-    margin-bottom: 20px;
+    position: absolute;
+    top: 69px;
+    left: 118px;
+    margin: 0 auto;
     text-align: center;
     font-size: 15px;
     color: #8A8A8A;
 }
+
+
 
 .border_top{
     width: 100px;
@@ -96,7 +102,7 @@
     left: 100px;
 }
 
-.get_more,.recover,.no_more {
+.btn {
     position: relative;
     display: block;
     background-color: #fafafa;
@@ -114,28 +120,17 @@
     color: #8A8A8A;
 }
 
+.get_more_empty{
+    color: #8A8A8A;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
 .recover{
     display: none;
 }
 
-
-.col1 .row1 .tagimage{
-    background: url("../img/coder.jpg") -441px -42px no-repeat;
-
+#totags{
+    color:#e2e2e2;
 }
 
-.col1 .row1 .tagimage:hover{
-    background-position: -300px -100px;
-    transition:background-position 0.5s linear,opacity 0.5s linear;
-    opacity: 1;
-}
-
-.col2 .row1 .tagimage{
-    background: url("../img/kiss.jpg") -20px 0 no-repeat;
-}
-
-.col2 .row1 .tagimage:hover{
-    background-position: -90px 0;
-    transition:background-position 0.5s linear,opacity 0.5s linear;
-    opacity: 1;
-}

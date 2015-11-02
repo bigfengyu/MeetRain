@@ -1,6 +1,6 @@
 {% load staticfiles %}
 {% for page in pages %}
-    <div class="page clear" id="{{ page.id }}">
+    <div href="{{ page.get_url }}" class="page clear" id="{{ page.id }}">
         <a class="page-title clear" href="{{ page.get_url }}">
             {% if page.isTopping %}
                 <span class="top">置顶</span>
@@ -13,10 +13,12 @@
             {{ page.subtitle }}
         </h3>
         <div class="page-sub">
-            <div class="pic clear">
-                <img width="192" src="{% static "img/page-sub.png" %}">  <!--192 x 113-->
-            </div>
-            <div class="summary">
+            {% if page.hasImage %}
+                <div class="pic clear">
+                    <img width="192" src="{{ page.getCoverImageUrl }}">  <!--192 x 113-->
+                </div>
+            {% endif %}
+            <div class="summary {{ page.hasImage|yesno:"hasImage," }}">
                 <p class="summary-up">
                     {{ page.summary|safe }}
                 </p>

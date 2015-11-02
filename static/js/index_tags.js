@@ -21,7 +21,7 @@ var getMorePagesInTags = function(){$(".get_more")
                         overview.append(e);
                         e.slideDown("slow");
                         setTimeout(function () {
-                            if(overview.find('.empty').size()){
+                            if(overview.find('.get_more_empty').size()){
                                 $(that).hide();
                                 $(that).next().show();
                             }

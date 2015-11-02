@@ -1,0 +1,44 @@
+#toabout{
+    color: #e2e2e2;
+}
+
+.container{
+    width: 640px;
+    margin:0 auto;
+}
+
+.portrait{
+    background: url("../img/portrait.jpeg");
+    background-size: 140px 140px;
+    margin: 0 auto;
+    width: 140px;
+    height: 140px;
+    border-radius: 140px;
+    border: 5px solid #e2e2e2;
+}
+
+.pt{
+    width: 300px;
+    margin: 0 auto;
+    border-bottom: 1px #e2e2e2 solid;
+    padding-bottom: 30px;
+}
+
+.intro{
+    padding-top:30px;
+}
+
+.contact{
+    margin-bottom: 60px;
+}
+
+.contact a:hover{
+    color: #4073a2;
+}
+
+.contact td{
+    font: 15px/25px "lucida grande", "lucida sans unicode", lucida, helvetica, "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
+    padding-bottom: 20px;
+    padding-right: 10px;
+}
+

@@ -4,14 +4,14 @@
 }
 
 .title h1{
-    font: 26px/34px 'Microsoft YaHei';
+    font: 26px/34px 'Microsoft YaHei','STHeiti';
     color: #333;
     text-align: left;
     margin-bottom: 18px;
 }
 
 .title h2{
-    font: 16px/18px 'Microsoft YaHei';
+    font: 16px/18px 'Microsoft YaHei','STHeiti';
     color: #8A8A8A;
     text-align: left;
     margin-bottom: 18px;
@@ -75,7 +75,7 @@
 }
 
 .page-subtitle{
-    font: 16px/18px "Microsoft YaHei";
+    font: 16px/18px 'STHeiti','Microsoft YaHei';
     color: #8A8A8A;
     text-align: left;
     margin-bottom: 18px;

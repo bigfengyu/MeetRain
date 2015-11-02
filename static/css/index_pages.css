@@ -13,7 +13,7 @@
     position: absolute;
     left: 32px;
     bottom: 42px;
-    font: 26px/28px 'Microsoft YaHei';
+    font: 26px/28px 'Microsoft YaHei','STHeiti';
     color: #fff;
     padding: 8px;
     background: rgba(0,0,0,0.6);
@@ -54,6 +54,7 @@
 }
 
 .page{
+    display: block;
     padding: 20px 15px 30px 15px;
     border-bottom: 1px solid #e2e2e2;
 }
@@ -68,7 +69,7 @@
 }
 
 .page-subtitle{
-    font: 16px/20px 'Microsoft YaHei';
+    font: 16px/20px 'Microsoft YaHei','STHeiti';
     color: #999;
     margin-bottom: 15px;
     word-break: break-all;
@@ -81,7 +82,7 @@
     margin-right: 14px;
 }
 
-.summaryHasPic{
+.hasImage{
     padding-left:206px;
 }
 
@@ -91,6 +92,7 @@
     padding-bottom: 10px;
     word-break: break-all;
     word-wrap: break-word;
+    text-align: justify;
 }
 
 .page-sub .summary-sub{
@@ -106,11 +108,14 @@
     background:#FFFFFF;
 }
 
-.get_more:hover{
+.get_more:hover,.get_more:active,.get_more:focus,.get_more:visited{
     background: #fafafa;
+    outline: none;
 }
 
+
 .page-title h2{
+    font-family: 'STHeiti','Microsoft YaHei';
     font-size: 24px;
     display: inline;
 }
@@ -125,4 +130,6 @@
     margin-left: 3px;
 }
 
-
+#toindex{
+    color: #e2e2e2;
+}

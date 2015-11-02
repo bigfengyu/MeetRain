@@ -50,21 +50,29 @@ def pagerender(request,page):
     dict = {'page':page}
     return render(request,'blog/page.html',dict)
 
-def get_more(request):
-    pages = Page.objects.filter(id__lt=request.GET['id']).order_by('-id')[0:10]
-    return render(request, 'blog/elements/pageitem.html',{'pages':pages})
+
 
 
 
 def indexTags(request):
-    cat = Category.objects.order_by('order')
+    cat = Category.objects.filter(order__gt=0).order_by('order')
     return render(request, 'blog/index/index_tags.html',{"category":cat})
 
 def getMorePagesInTags(request):
     tagid = request.GET['tagid']
     pageid = request.GET['pageid']
-    pages = Category.objects.get(id=tagid).pages.filter(id__lt=pageid).order_by('-id');
-    return render(request, 'blog/elements/get_more_tags.html',{"pages":pages})
+    tagitem = Category.objects.get(id=tagid)
+    if tagitem.normalOrder:
+        pages = tagitem.pages.filter(id__gt=pageid).order_by('id')
+    else:
+        pages = tagitem.pages.filter(id__lt=pageid).order_by('-id')
+    return render(request, 'blog/elements/get_more_tags.html',{'pages':pages})
 
+def get_more(request):
+    pages = Page.objects.filter(id__lt=request.GET['id']).order_by('-id').exclude(categorys__order=0)[0:10]
+    return render(request, 'blog/elements/pageitem.html',{'pages':pages})
+
+def indexAbout(request):
+    return render(request,'blog/index/index_about.html')
 
 

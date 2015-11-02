@@ -53,7 +53,7 @@ class PageCategoryInline(admin.TabularInline):
 class PageAdmin(admin.ModelAdmin):
     inlines = [PageImageInline,PageCategoryInline,]
     form = PageForm
-    list_display = ['title','id','date','views',]
+    list_display = ['title','id','date','views','hasImage']
 
 
 

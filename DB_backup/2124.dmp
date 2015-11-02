@@ -1,0 +1,1380 @@
+--
+-- PostgreSQL database dump
+--
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+
+--
+-- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
+--
+
+CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
+
+
+--
+-- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
+
+
+SET search_path = public, pg_catalog;
+
+SET default_tablespace = '';
+
+SET default_with_oids = false;
+
+--
+-- Name: auth_group; Type: TABLE; Schema: public; Owner: bigfeng; Tablespace: 
+--
+
+CREATE TABLE auth_group (
+    id integer NOT NULL,
+    name character varying(80) NOT NULL
+);
+
+
+ALTER TABLE auth_group OWNER TO bigfeng;
+
+--
+-- Name: auth_group_id_seq; Type: SEQUENCE; Schema: public; Owner: bigfeng
+--
+
+CREATE SEQUENCE auth_group_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE auth_group_id_seq OWNER TO bigfeng;
+
+--
+-- Name: auth_group_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: bigfeng
+--
+
+ALTER SEQUENCE auth_group_id_seq OWNED BY auth_group.id;
+
+
+--
+-- Name: auth_group_permissions; Type: TABLE; Schema: public; Owner: bigfeng; Tablespace: 
+--
+
+CREATE TABLE auth_group_permissions (
+    id integer NOT NULL,
+    group_id integer NOT NULL,
+    permission_id integer NOT NULL
+);
+
+
+ALTER TABLE auth_group_permissions OWNER TO bigfeng;
+
+--
+-- Name: auth_group_permissions_id_seq; Type: SEQUENCE; Schema: public; Owner: bigfeng
+--
+
+CREATE SEQUENCE auth_group_permissions_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE auth_group_permissions_id_seq OWNER TO bigfeng;
+
+--
+-- Name: auth_group_permissions_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: bigfeng
+--
+
+ALTER SEQUENCE auth_group_permissions_id_seq OWNED BY auth_group_permissions.id;
+
+
+--
+-- Name: auth_permission; Type: TABLE; Schema: public; Owner: bigfeng; Tablespace: 
+--
+
+CREATE TABLE auth_permission (
+    id integer NOT NULL,
+    name character varying(255) NOT NULL,
+    content_type_id integer NOT NULL,
+    codename character varying(100) NOT NULL
+);
+
+
+ALTER TABLE auth_permission OWNER TO bigfeng;
+
+--
+-- Name: auth_permission_id_seq; Type: SEQUENCE; Schema: public; Owner: bigfeng
+--
+
+CREATE SEQUENCE auth_permission_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE auth_permission_id_seq OWNER TO bigfeng;
+
+--
+-- Name: auth_permission_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: bigfeng
+--
+
+ALTER SEQUENCE auth_permission_id_seq OWNED BY auth_permission.id;
+
+
+--
+-- Name: auth_user; Type: TABLE; Schema: public; Owner: bigfeng; Tablespace: 
+--
+
+CREATE TABLE auth_user (
+    id integer NOT NULL,
+    password character varying(128) NOT NULL,
+    last_login timestamp with time zone,
+    is_superuser boolean NOT NULL,
+    username character varying(30) NOT NULL,
+    first_name character varying(30) NOT NULL,
+    last_name character varying(30) NOT NULL,
+    email character varying(254) NOT NULL,
+    is_staff boolean NOT NULL,
+    is_active boolean NOT NULL,
+    date_joined timestamp with time zone NOT NULL
+);
+
+
+ALTER TABLE auth_user OWNER TO bigfeng;
+
+--
+-- Name: auth_user_groups; Type: TABLE; Schema: public; Owner: bigfeng; Tablespace: 
+--
+
+CREATE TABLE auth_user_groups (
+    id integer NOT NULL,
+    user_id integer NOT NULL,
+    group_id integer NOT NULL
+);
+
+
+ALTER TABLE auth_user_groups OWNER TO bigfeng;
+
+--
+-- Name: auth_user_groups_id_seq; Type: SEQUENCE; Schema: public; Owner: bigfeng
+--
+
+CREATE SEQUENCE auth_user_groups_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE auth_user_groups_id_seq OWNER TO bigfeng;
+
+--
+-- Name: auth_user_groups_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: bigfeng
+--
+
+ALTER SEQUENCE auth_user_groups_id_seq OWNED BY auth_user_groups.id;
+
+
+--
+-- Name: auth_user_id_seq; Type: SEQUENCE; Schema: public; Owner: bigfeng
+--
+
+CREATE SEQUENCE auth_user_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE auth_user_id_seq OWNER TO bigfeng;
+
+--
+-- Name: auth_user_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: bigfeng
+--
+
+ALTER SEQUENCE auth_user_id_seq OWNED BY auth_user.id;
+
+
+--
+-- Name: auth_user_user_permissions; Type: TABLE; Schema: public; Owner: bigfeng; Tablespace: 
+--
+
+CREATE TABLE auth_user_user_permissions (
+    id integer NOT NULL,
+    user_id integer NOT NULL,
+    permission_id integer NOT NULL
+);
+
+
+ALTER TABLE auth_user_user_permissions OWNER TO bigfeng;
+
+--
+-- Name: auth_user_user_permissions_id_seq; Type: SEQUENCE; Schema: public; Owner: bigfeng
+--
+
+CREATE SEQUENCE auth_user_user_permissions_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE auth_user_user_permissions_id_seq OWNER TO bigfeng;
+
+--
+-- Name: auth_user_user_permissions_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: bigfeng
+--
+
+ALTER SEQUENCE auth_user_user_permissions_id_seq OWNED BY auth_user_user_permissions.id;
+
+
+--
+-- Name: blog_category; Type: TABLE; Schema: public; Owner: bigfeng; Tablespace: 
+--
+
+CREATE TABLE blog_category (
+    id integer NOT NULL,
+    "order" integer NOT NULL,
+    name character varying(128) NOT NULL
+);
+
+
+ALTER TABLE blog_category OWNER TO bigfeng;
+
+--
+-- Name: blog_category_id_seq; Type: SEQUENCE; Schema: public; Owner: bigfeng
+--
+
+CREATE SEQUENCE blog_category_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE blog_category_id_seq OWNER TO bigfeng;
+
+--
+-- Name: blog_category_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: bigfeng
+--
+
+ALTER SEQUENCE blog_category_id_seq OWNED BY blog_category.id;
+
+
+--
+-- Name: blog_category_pages; Type: TABLE; Schema: public; Owner: bigfeng; Tablespace: 
+--
+
+CREATE TABLE blog_category_pages (
+    id integer NOT NULL,
+    category_id integer NOT NULL,
+    page_id integer NOT NULL
+);
+
+
+ALTER TABLE blog_category_pages OWNER TO bigfeng;
+
+--
+-- Name: blog_category_pages_id_seq; Type: SEQUENCE; Schema: public; Owner: bigfeng
+--
+
+CREATE SEQUENCE blog_category_pages_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE blog_category_pages_id_seq OWNER TO bigfeng;
+
+--
+-- Name: blog_category_pages_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: bigfeng
+--
+
+ALTER SEQUENCE blog_category_pages_id_seq OWNED BY blog_category_pages.id;
+
+
+--
+-- Name: blog_indexcover; Type: TABLE; Schema: public; Owner: bigfeng; Tablespace: 
+--
+
+CREATE TABLE blog_indexcover (
+    id integer NOT NULL,
+    page_id integer NOT NULL
+);
+
+
+ALTER TABLE blog_indexcover OWNER TO bigfeng;
+
+--
+-- Name: blog_indexcover_id_seq; Type: SEQUENCE; Schema: public; Owner: bigfeng
+--
+
+CREATE SEQUENCE blog_indexcover_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE blog_indexcover_id_seq OWNER TO bigfeng;
+
+--
+-- Name: blog_indexcover_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: bigfeng
+--
+
+ALTER SEQUENCE blog_indexcover_id_seq OWNED BY blog_indexcover.id;
+
+
+--
+-- Name: blog_page; Type: TABLE; Schema: public; Owner: bigfeng; Tablespace: 
+--
+
+CREATE TABLE blog_page (
+    id integer NOT NULL,
+    title character varying(128) NOT NULL,
+    subtitle character varying(128) NOT NULL,
+    content text NOT NULL,
+    slug character varying(50) NOT NULL,
+    date date NOT NULL,
+    views integer NOT NULL,
+    summary character varying(200) NOT NULL,
+    CONSTRAINT blog_page_views_check CHECK ((views >= 0))
+);
+
+
+ALTER TABLE blog_page OWNER TO bigfeng;
+
+--
+-- Name: blog_page_id_seq; Type: SEQUENCE; Schema: public; Owner: bigfeng
+--
+
+CREATE SEQUENCE blog_page_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE blog_page_id_seq OWNER TO bigfeng;
+
+--
+-- Name: blog_page_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: bigfeng
+--
+
+ALTER SEQUENCE blog_page_id_seq OWNED BY blog_page.id;
+
+
+--
+-- Name: blog_pageimage; Type: TABLE; Schema: public; Owner: bigfeng; Tablespace: 
+--
+
+CREATE TABLE blog_pageimage (
+    id integer NOT NULL,
+    page_id integer NOT NULL,
+    image character varying(100) NOT NULL
+);
+
+
+ALTER TABLE blog_pageimage OWNER TO bigfeng;
+
+--
+-- Name: blog_pageimage_id_seq; Type: SEQUENCE; Schema: public; Owner: bigfeng
+--
+
+CREATE SEQUENCE blog_pageimage_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE blog_pageimage_id_seq OWNER TO bigfeng;
+
+--
+-- Name: blog_pageimage_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: bigfeng
+--
+
+ALTER SEQUENCE blog_pageimage_id_seq OWNED BY blog_pageimage.id;
+
+
+--
+-- Name: django_admin_log; Type: TABLE; Schema: public; Owner: bigfeng; Tablespace: 
+--
+
+CREATE TABLE django_admin_log (
+    id integer NOT NULL,
+    action_time timestamp with time zone NOT NULL,
+    object_id text,
+    object_repr character varying(200) NOT NULL,
+    action_flag smallint NOT NULL,
+    change_message text NOT NULL,
+    content_type_id integer,
+    user_id integer NOT NULL,
+    CONSTRAINT django_admin_log_action_flag_check CHECK ((action_flag >= 0))
+);
+
+
+ALTER TABLE django_admin_log OWNER TO bigfeng;
+
+--
+-- Name: django_admin_log_id_seq; Type: SEQUENCE; Schema: public; Owner: bigfeng
+--
+
+CREATE SEQUENCE django_admin_log_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE django_admin_log_id_seq OWNER TO bigfeng;
+
+--
+-- Name: django_admin_log_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: bigfeng
+--
+
+ALTER SEQUENCE django_admin_log_id_seq OWNED BY django_admin_log.id;
+
+
+--
+-- Name: django_content_type; Type: TABLE; Schema: public; Owner: bigfeng; Tablespace: 
+--
+
+CREATE TABLE django_content_type (
+    id integer NOT NULL,
+    app_label character varying(100) NOT NULL,
+    model character varying(100) NOT NULL
+);
+
+
+ALTER TABLE django_content_type OWNER TO bigfeng;
+
+--
+-- Name: django_content_type_id_seq; Type: SEQUENCE; Schema: public; Owner: bigfeng
+--
+
+CREATE SEQUENCE django_content_type_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE django_content_type_id_seq OWNER TO bigfeng;
+
+--
+-- Name: django_content_type_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: bigfeng
+--
+
+ALTER SEQUENCE django_content_type_id_seq OWNED BY django_content_type.id;
+
+
+--
+-- Name: django_migrations; Type: TABLE; Schema: public; Owner: bigfeng; Tablespace: 
+--
+
+CREATE TABLE django_migrations (
+    id integer NOT NULL,
+    app character varying(255) NOT NULL,
+    name character varying(255) NOT NULL,
+    applied timestamp with time zone NOT NULL
+);
+
+
+ALTER TABLE django_migrations OWNER TO bigfeng;
+
+--
+-- Name: django_migrations_id_seq; Type: SEQUENCE; Schema: public; Owner: bigfeng
+--
+
+CREATE SEQUENCE django_migrations_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE django_migrations_id_seq OWNER TO bigfeng;
+
+--
+-- Name: django_migrations_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: bigfeng
+--
+
+ALTER SEQUENCE django_migrations_id_seq OWNED BY django_migrations.id;
+
+
+--
+-- Name: django_session; Type: TABLE; Schema: public; Owner: bigfeng; Tablespace: 
+--
+
+CREATE TABLE django_session (
+    session_key character varying(40) NOT NULL,
+    session_data text NOT NULL,
+    expire_date timestamp with time zone NOT NULL
+);
+
+
+ALTER TABLE django_session OWNER TO bigfeng;
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: bigfeng
+--
+
+ALTER TABLE ONLY auth_group ALTER COLUMN id SET DEFAULT nextval('auth_group_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: bigfeng
+--
+
+ALTER TABLE ONLY auth_group_permissions ALTER COLUMN id SET DEFAULT nextval('auth_group_permissions_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: bigfeng
+--
+
+ALTER TABLE ONLY auth_permission ALTER COLUMN id SET DEFAULT nextval('auth_permission_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: bigfeng
+--
+
+ALTER TABLE ONLY auth_user ALTER COLUMN id SET DEFAULT nextval('auth_user_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: bigfeng
+--
+
+ALTER TABLE ONLY auth_user_groups ALTER COLUMN id SET DEFAULT nextval('auth_user_groups_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: bigfeng
+--
+
+ALTER TABLE ONLY auth_user_user_permissions ALTER COLUMN id SET DEFAULT nextval('auth_user_user_permissions_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: bigfeng
+--
+
+ALTER TABLE ONLY blog_category ALTER COLUMN id SET DEFAULT nextval('blog_category_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: bigfeng
+--
+
+ALTER TABLE ONLY blog_category_pages ALTER COLUMN id SET DEFAULT nextval('blog_category_pages_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: bigfeng
+--
+
+ALTER TABLE ONLY blog_indexcover ALTER COLUMN id SET DEFAULT nextval('blog_indexcover_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: bigfeng
+--
+
+ALTER TABLE ONLY blog_page ALTER COLUMN id SET DEFAULT nextval('blog_page_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: bigfeng
+--
+
+ALTER TABLE ONLY blog_pageimage ALTER COLUMN id SET DEFAULT nextval('blog_pageimage_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: bigfeng
+--
+
+ALTER TABLE ONLY django_admin_log ALTER COLUMN id SET DEFAULT nextval('django_admin_log_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: bigfeng
+--
+
+ALTER TABLE ONLY django_content_type ALTER COLUMN id SET DEFAULT nextval('django_content_type_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: bigfeng
+--
+
+ALTER TABLE ONLY django_migrations ALTER COLUMN id SET DEFAULT nextval('django_migrations_id_seq'::regclass);
+
+
+--
+-- Data for Name: auth_group; Type: TABLE DATA; Schema: public; Owner: bigfeng
+--
+
+COPY auth_group (id, name) FROM stdin;
+\.
+
+
+--
+-- Name: auth_group_id_seq; Type: SEQUENCE SET; Schema: public; Owner: bigfeng
+--
+
+SELECT pg_catalog.setval('auth_group_id_seq', 1, false);
+
+
+--
+-- Data for Name: auth_group_permissions; Type: TABLE DATA; Schema: public; Owner: bigfeng
+--
+
+COPY auth_group_permissions (id, group_id, permission_id) FROM stdin;
+\.
+
+
+--
+-- Name: auth_group_permissions_id_seq; Type: SEQUENCE SET; Schema: public; Owner: bigfeng
+--
+
+SELECT pg_catalog.setval('auth_group_permissions_id_seq', 1, false);
+
+
+--
+-- Data for Name: auth_permission; Type: TABLE DATA; Schema: public; Owner: bigfeng
+--
+
+COPY auth_permission (id, name, content_type_id, codename) FROM stdin;
+1	Can add log entry	1	add_logentry
+2	Can change log entry	1	change_logentry
+3	Can delete log entry	1	delete_logentry
+4	Can add permission	2	add_permission
+5	Can change permission	2	change_permission
+6	Can delete permission	2	delete_permission
+7	Can add group	3	add_group
+8	Can change group	3	change_group
+9	Can delete group	3	delete_group
+10	Can add user	4	add_user
+11	Can change user	4	change_user
+12	Can delete user	4	delete_user
+13	Can add content type	5	add_contenttype
+14	Can change content type	5	change_contenttype
+15	Can delete content type	5	delete_contenttype
+16	Can add session	6	add_session
+17	Can change session	6	change_session
+18	Can delete session	6	delete_session
+19	Can add category	7	add_category
+20	Can change category	7	change_category
+21	Can delete category	7	delete_category
+22	Can add page image	8	add_pageimage
+23	Can change page image	8	change_pageimage
+24	Can delete page image	8	delete_pageimage
+25	Can add page	9	add_page
+26	Can change page	9	change_page
+27	Can delete page	9	delete_page
+28	Can add index cover	10	add_indexcover
+29	Can change index cover	10	change_indexcover
+30	Can delete index cover	10	delete_indexcover
+\.
+
+
+--
+-- Name: auth_permission_id_seq; Type: SEQUENCE SET; Schema: public; Owner: bigfeng
+--
+
+SELECT pg_catalog.setval('auth_permission_id_seq', 30, true);
+
+
+--
+-- Data for Name: auth_user; Type: TABLE DATA; Schema: public; Owner: bigfeng
+--
+
+COPY auth_user (id, password, last_login, is_superuser, username, first_name, last_name, email, is_staff, is_active, date_joined) FROM stdin;
+1	pbkdf2_sha256$20000$r6MoTISIdEGq$iDXDGT3pUGLS4KDbAPdITpXp31kkYRLW6UJlZW0kvt4=	2015-10-30 10:29:45.767476+08	t	fengyu				t	t	2015-10-30 10:29:42.45714+08
+\.
+
+
+--
+-- Data for Name: auth_user_groups; Type: TABLE DATA; Schema: public; Owner: bigfeng
+--
+
+COPY auth_user_groups (id, user_id, group_id) FROM stdin;
+\.
+
+
+--
+-- Name: auth_user_groups_id_seq; Type: SEQUENCE SET; Schema: public; Owner: bigfeng
+--
+
+SELECT pg_catalog.setval('auth_user_groups_id_seq', 1, false);
+
+
+--
+-- Name: auth_user_id_seq; Type: SEQUENCE SET; Schema: public; Owner: bigfeng
+--
+
+SELECT pg_catalog.setval('auth_user_id_seq', 1, true);
+
+
+--
+-- Data for Name: auth_user_user_permissions; Type: TABLE DATA; Schema: public; Owner: bigfeng
+--
+
+COPY auth_user_user_permissions (id, user_id, permission_id) FROM stdin;
+\.
+
+
+--
+-- Name: auth_user_user_permissions_id_seq; Type: SEQUENCE SET; Schema: public; Owner: bigfeng
+--
+
+SELECT pg_catalog.setval('auth_user_user_permissions_id_seq', 1, false);
+
+
+--
+-- Data for Name: blog_category; Type: TABLE DATA; Schema: public; Owner: bigfeng
+--
+
+COPY blog_category (id, "order", name) FROM stdin;
+1	0	置顶文章
+2	1	推荐文章
+3	2	叫我序员就行
+4	4	见好就收
+\.
+
+
+--
+-- Name: blog_category_id_seq; Type: SEQUENCE SET; Schema: public; Owner: bigfeng
+--
+
+SELECT pg_catalog.setval('blog_category_id_seq', 4, true);
+
+
+--
+-- Data for Name: blog_category_pages; Type: TABLE DATA; Schema: public; Owner: bigfeng
+--
+
+COPY blog_category_pages (id, category_id, page_id) FROM stdin;
+\.
+
+
+--
+-- Name: blog_category_pages_id_seq; Type: SEQUENCE SET; Schema: public; Owner: bigfeng
+--
+
+SELECT pg_catalog.setval('blog_category_pages_id_seq', 1, false);
+
+
+--
+-- Data for Name: blog_indexcover; Type: TABLE DATA; Schema: public; Owner: bigfeng
+--
+
+COPY blog_indexcover (id, page_id) FROM stdin;
+1	3
+\.
+
+
+--
+-- Name: blog_indexcover_id_seq; Type: SEQUENCE SET; Schema: public; Owner: bigfeng
+--
+
+SELECT pg_catalog.setval('blog_indexcover_id_seq', 1, true);
+
+
+--
+-- Data for Name: blog_page; Type: TABLE DATA; Schema: public; Owner: bigfeng
+--
+
+COPY blog_page (id, title, subtitle, content, slug, date, views, summary) FROM stdin;
+3	saf	asfd	12311414		2015-10-31	12	1141
+2	niahao		1912年10月10日，是中华民国第一个国庆纪念日。上海《神州日报》以《光复会继起之领袖陶焕卿君事略》为标题，刊登了光复会会长章太炎的口述实录，并且特别注明：“太炎口授，寂照笔述。时为陶君被匪徒戕害之次日。”\r\n陶成章遇害的次日即1912年1月15日。章太炎及《神州日报》之所以没有在第一时间公开刊登针对孙中山、陈其美、胡汉民、黄兴等人直接点名的口述实录，主要原因是慑于临时大总统孙中山和沪军都督陈其美的强势权威。章太炎在这篇文章中写道：“会稽陶焕卿，讳成章，光复会中最重要之一会员。……未几，孙文归，被举为临时大总统，就任后，即与陶君书，诘问从前宣布罪状之理由，谓予非以大总统资地与汝交涉，乃以个人资地与汝交涉。书到之日，阴历十一月二十三日也。其后三日，陶即于广慈医院被人刺死。”\r\n\r\n到了1928年，章太炎在《自定年谱》1912年项下写道：“初，赵伯先之死，未有疑克强者也，焕卿不能分别，并恶之。至是，日与黄、陈不合，自设光复军总司令部于上海，募兵。余告之曰：‘江南军事已罢，招募无名。丈夫当有远志，不宜与人争权于蜗角间。武昌方亟，君当就蛰仙乞千余人上援，大义所在，蛰仙不能却也。如此既以避逼，且可有功。恋此不去，必危其身。’焕卿不从，果被刺死。或言英士为之也。”\r\n这里的赵伯先即光复会与同盟会的双重会员赵声。蛰仙即时任浙江都督的汤寿潜。在这段话中，以所谓国学大师自居的章太炎，至少编造了四项谎言：\r\n其一，赵声之死，光复会方面的章太炎、陶成章等人所怀疑的是胡汉民而不是黄克强即黄兴。辛亥革命前后与同盟会方面的孙中山、黄兴、陈其美等人采取不合作态度的，也不只是光复会副会长陶成章，光复会会长章太炎表现得更加锋芒毕露、旗帜鲜明。\r\n其二，陶成章当年并没有在上海设立光复军总司令部，而只是设立了“光复义勇军练兵筹饷局”。在此之前，光复会军事领导人李燮和，已经在吴淞设立光复军总司令部。\r\n其三，陶成章在上海设立“光复义勇军练兵筹饷局”时，正是苏浙联军会攻南京的关键时刻。1911年11月29日早晨，张勋在火炮配合下亲自带领精锐部队出城与驻守孝陵卫的浙军决战，正是由于王任化奉陶成章命令从浙江台州招募的一营光复义勇军及时赶到，才挽救了苏浙联军的一场败局。章太炎所谓“江南军事已罢，招募无名……恋此不去，必危其身”，分明是对于惨遭杀害的陶成章的栽赃抹黑。\r\n其四，章太炎之所以要蓄意栽赃抹黑陶成章，是因为他急于推卸洗白自己所犯下的明显捧杀陶成章的历史罪责。他所谓的“焕卿不从，果被刺死”，完全是“欲加其罪，何患无辞”的“莫须有”。\r\n据魏兰写作于1912年8月6日的《陶焕卿先生行述》介绍，陶成章起初听到陈其美要派人刺杀他的江湖传言时，并没有特别在意，直到王文庆从南京写信通报相关信息，他才意识到事态严峻。于是，他先是到客利旅馆躲避，由于光复会会务繁忙，他不得不从客利旅馆迁移到“国民联合会”。光复会方面的会党同志认为这里人员来往过于繁杂，建议陶成章迁移到位于江西路的光复会秘密机关所。第二天，陶成章又迁移到更加隐秘的汇中旅馆。1911年12月29日，同盟会员在上海汇中旅馆宴请从海外回国的孙中山，陶成章在饭厅里意外遇到脱离光复会而加入同盟会的绍兴军政府都督王金发、浙江军政府政事部长褚辅成等人。12月30日，暴露行踪的陶成章只好以治病为借口，从汇中旅馆躲进位于上海法租界的广慈医院。\r\n在陶成章一再通过消极退让以保全性命的情况下，浙江都督的人选问题把他推到风口浪尖。1912年1月3日，南京临时政府通过各部总次长名单，名单中的交通总长一职由浙江都督汤寿潜出任。汤寿潜在卸任浙江都督的同时，推荐章太炎、陶成章、陈其美为继任人选。1月7日，已经感受到生命危险的陶成章，在同盟会的上海机关报《民立报》上发表通告：“当南京未破前，旧同事招仆者，多以练兵、筹饷问题就商于仆，仆未尝敢有所推诿。逮南京破后，仆以东南大局粗定，爰函知各同事，请将一切事宜商之各军政分府及杭州军政府，以便事权统一，请勿以仆一人名义号召四方，是所至祷！恐函告未周，用再登报声明。”\r\n同样是在1月7日，章太炎没有征得陶成章同意，便在“皓”电中为其评功摆好、争权夺位：“蜇公举炳麟及陶焕卿、陈英士代理浙事。英士志在北伐，炳麟愿作民党，焕卿奔走国事，险阻艰难，十年如一日。此次下江光复，微李燮和，上海不举；微朱价人，南京不下；而我浙之得力于敢死队者甚多，是皆焕卿平日经营联合之力。且浙中会党潜势，尤非焕卿不能拊慰。鄙意若令代理浙事，得诸公全力以助，必为吾浙之福。”\r\n​\r\n\r\n（章太炎、陶成章）\r\n1月8日，章太炎专门致电汤寿潜，再次表白自己“天性耿介，惟愿处于民党地位”；进而吹捧陶成章“其功非独在浙江一省。代理浙事，微斯人谁与归？”\r\n陶成章对于章太炎极端情绪化的吹捧推荐并不领情，他在随后的公开通电中转而推荐光复会与同盟会的双重会员、此前担任广东方面的混成协协统和军政部长的蒋尊簋继任都督：“仆自维辁才，恐负重任。如汤公难留，则继之者非蒋军统莫属，请合力劝驾，以维大局。”\r\n即使如此，同盟会方面的陈其美、蒋介石等人依然不肯放过陶成章。1月12日，陶成章的这份通电在《民立报》公开发表。1月14日凌晨，陶成章便倒在了蒋介石、王竹卿、陈锡奎、刘永顺等人参与组织的暗杀行动之中。\r\n所谓捧杀的原始出处，源于《风俗通》的“长吏马肥，观者快之，乘者喜其言，驰驱不已，至于死”。1919年5月9日，时任北京大学校长的光复会创始会长蔡元培，在“五四运动”的关键时刻急流勇退，在其辞职启示中巧妙引用这一典故说：“吾倦矣，杀君马者道旁儿。”意思是杀死你的快马的，就是在旁边给你鼓掌叫好的那些人。章太炎的国学弟子鲁迅专门有过一篇杂文《骂杀与捧杀》，其中写道：“现在被骂杀的少，被捧杀的却多。……以学者或诗人的招牌，来批评或介绍一个作者，开初是很能够蒙混旁人的，但待到旁人看清了这作者的真相的时候，却只剩了他自己的不诚恳，或学识的不够了。然而如果没有旁人来指明真相呢，这作家就从此被捧杀，不知道要多少年后才翻身。”\r\n就章太炎来说，他对于昔日战友陶成章的相关表现，正是这样一种生前先捧杀、死后再骂杀的推卸罪责、嫁祸于人、颠倒反复、自相矛盾的恶劣态度。陶成章虽然不是被章太炎直接杀害的，但是，章太炎对于陶成章鼓动激励的捧杀表现，在一定程度上决定了陶成章的悲剧命运。关于这一点，章太炎在《自定年谱》的1910年项下，另有更加露骨也更加荒诞的历史叙述：“焕卿数言克强得伯先，事或可就，逸仙似无成者。余谓：‘集党数年，未有规画，恐诒之后人耳。然清自袁世凯废、张之洞死，宗室用事，人民胥怨，固不能久。粤人好利而无兵略，湘中朴气衰矣，亦未必属孙、黄也。君以光复会号召，所谓自靖自献，成败利钝，谁能知之。”\r\n把章太炎鼓动激励陶成章的这段话语解释得通俗一点，意思就是：广东的孙中山和湖南的黄兴，未必能够奉天承运得天下；以光复会相号召的陶成章，只要能够打定主意独立自主、努力进取，未必就不能够奉天承运得天下。\r\n章太炎这种生前先捧杀、死后再骂杀的推卸罪责、嫁祸于人、颠倒反复、自相矛盾的恶劣态度，在四川籍革命先驱邹容身上和湖南籍同盟会首领宋教仁身上，也有过高度类同的相关表现。回顾历史，固守传统国学的章太炎，在最为基本的人情事理方面，一直都是讲不通、站不住的。他缺乏一整套相对系统的价值谱系和逻辑关联的国学见解，运用到现代文明社会极其复杂的市场经济及其制度建设方面，只能是败事有余而成事不足。\r\n1912年10月10日，是中华民国第一个国庆纪念日。上海《神州日报》以《光复会继起之领袖陶焕卿君事略》为标题，刊登了光复会会长章太炎的口述实录，并且特别注明：“太炎口授，寂照笔述。时为陶君被匪徒戕害之次日。”\r\n陶成章遇害的次日即1912年1月15日。章太炎及《神州日报》之所以没有在第一时间公开刊登针对孙中山、陈其美、胡汉民、黄兴等人直接点名的口述实录，主要原因是慑于临时大总统孙中山和沪军都督陈其美的强势权威。章太炎在这篇文章中写道：“会稽陶焕卿，讳成章，光复会中最重要之一会员。……未几，孙文归，被举为临时大总统，就任后，即与陶君书，诘问从前宣布罪状之理由，谓予非以大总统资地与汝交涉，乃以个人资地与汝交涉。书到之日，阴历十一月二十三日也。其后三日，陶即于广慈医院被人刺死。”\r\n\r\n到了1928年，章太炎在《自定年谱》1912年项下写道：“初，赵伯先之死，未有疑克强者也，焕卿不能分别，并恶之。至是，日与黄、陈不合，自设光复军总司令部于上海，募兵。余告之曰：‘江南军事已罢，招募无名。丈夫当有远志，不宜与人争权于蜗角间。武昌方亟，君当就蛰仙乞千余人上援，大义所在，蛰仙不能却也。如此既以避逼，且可有功。恋此不去，必危其身。’焕卿不从，果被刺死。或言英士为之也。”\r\n这里的赵伯先即光复会与同盟会的双重会员赵声。蛰仙即时任浙江都督的汤寿潜。在这段话中，以所谓国学大师自居的章太炎，至少编造了四项谎言：\r\n其一，赵声之死，光复会方面的章太炎、陶成章等人所怀疑的是胡汉民而不是黄克强即黄兴。辛亥革命前后与同盟会方面的孙中山、黄兴、陈其美等人采取不合作态度的，也不只是光复会副会长陶成章，光复会会长章太炎表现得更加锋芒毕露、旗帜鲜明。\r\n其二，陶成章当年并没有在上海设立光复军总司令部，而只是设立了“光复义勇军练兵筹饷局”。在此之前，光复会军事领导人李燮和，已经在吴淞设立光复军总司令部。\r\n其三，陶成章在上海设立“光复义勇军练兵筹饷局”时，正是苏浙联军会攻南京的关键时刻。1911年11月29日早晨，张勋在火炮配合下亲自带领精锐部队出城与驻守孝陵卫的浙军决战，正是由于王任化奉陶成章命令从浙江台州招募的一营光复义勇军及时赶到，才挽救了苏浙联军的一场败局。章太炎所谓“江南军事已罢，招募无名……恋此不去，必危其身”，分明是对于惨遭杀害的陶成章的栽赃抹黑。\r\n其四，章太炎之所以要蓄意栽赃抹黑陶成章，是因为他急于推卸洗白自己所犯下的明显捧杀陶成章的历史罪责。他所谓的“焕卿不从，果被刺死”，完全是“欲加其罪，何患无辞”的“莫须有”。\r\n据魏兰写作于1912年8月6日的《陶焕卿先生行述》介绍，陶成章起初听到陈其美要派人刺杀他的江湖传言时，并没有特别在意，直到王文庆从南京写信通报相关信息，他才意识到事态严峻。于是，他先是到客利旅馆躲避，由于光复会会务繁忙，他不得不从客利旅馆迁移到“国民联合会”。光复会方面的会党同志认为这里人员来往过于繁杂，建议陶成章迁移到位于江西路的光复会秘密机关所。第二天，陶成章又迁移到更加隐秘的汇中旅馆。1911年12月29日，同盟会员在上海汇中旅馆宴请从海外回国的孙中山，陶成章在饭厅里意外遇到脱离光复会而加入同盟会的绍兴军政府都督王金发、浙江军政府政事部长褚辅成等人。12月30日，暴露行踪的陶成章只好以治病为借口，从汇中旅馆躲进位于上海法租界的广慈医院。\r\n在陶成章一再通过消极退让以保全性命的情况下，浙江都督的人选问题把他推到风口浪尖。1912年1月3日，南京临时政府通过各部总次长名单，名单中的交通总长一职由浙江都督汤寿潜出任。汤寿潜在卸任浙江都督的同时，推荐章太炎、陶成章、陈其美为继任人选。1月7日，已经感受到生命危险的陶成章，在同盟会的上海机关报《民立报》上发表通告：“当南京未破前，旧同事招仆者，多以练兵、筹饷问题就商于仆，仆未尝敢有所推诿。逮南京破后，仆以东南大局粗定，爰函知各同事，请将一切事宜商之各军政分府及杭州军政府，以便事权统一，请勿以仆一人名义号召四方，是所至祷！恐函告未周，用再登报声明。”\r\n同样是在1月7日，章太炎没有征得陶成章同意，便在“皓”电中为其评功摆好、争权夺位：“蜇公举炳麟及陶焕卿、陈英士代理浙事。英士志在北伐，炳麟愿作民党，焕卿奔走国事，险阻艰难，十年如一日。此次下江光复，微李燮和，上海不举；微朱价人，南京不下；而我浙之得力于敢死队者甚多，是皆焕卿平日经营联合之力。且浙中会党潜势，尤非焕卿不能拊慰。鄙意若令代理浙事，得诸公全力以助，必为吾浙之福。”\r\n​\r\n\r\n（章太炎、陶成章）\r\n1月8日，章太炎专门致电汤寿潜，再次表白自己“天性耿介，惟愿处于民党地位”；进而吹捧陶成章“其功非独在浙江一省。代理浙事，微斯人谁与归？”\r\n陶成章对于章太炎极端情绪化的吹捧推荐并不领情，他在随后的公开通电中转而推荐光复会与同盟会的双重会员、此前担任广东方面的混成协协统和军政部长的蒋尊簋继任都督：“仆自维辁才，恐负重任。如汤公难留，则继之者非蒋军统莫属，请合力劝驾，以维大局。”\r\n即使如此，同盟会方面的陈其美、蒋介石等人依然不肯放过陶成章。1月12日，陶成章的这份通电在《民立报》公开发表。1月14日凌晨，陶成章便倒在了蒋介石、王竹卿、陈锡奎、刘永顺等人参与组织的暗杀行动之中。\r\n所谓捧杀的原始出处，源于《风俗通》的“长吏马肥，观者快之，乘者喜其言，驰驱不已，至于死”。1919年5月9日，时任北京大学校长的光复会创始会长蔡元培，在“五四运动”的关键时刻急流勇退，在其辞职启示中巧妙引用这一典故说：“吾倦矣，杀君马者道旁儿。”意思是杀死你的快马的，就是在旁边给你鼓掌叫好的那些人。章太炎的国学弟子鲁迅专门有过一篇杂文《骂杀与捧杀》，其中写道：“现在被骂杀的少，被捧杀的却多。……以学者或诗人的招牌，来批评或介绍一个作者，开初是很能够蒙混旁人的，但待到旁人看清了这作者的真相的时候，却只剩了他自己的不诚恳，或学识的不够了。然而如果没有旁人来指明真相呢，这作家就从此被捧杀，不知道要多少年后才翻身。”\r\n就章太炎来说，他对于昔日战友陶成章的相关表现，正是这样一种生前先捧杀、死后再骂杀的推卸罪责、嫁祸于人、颠倒反复、自相矛盾的恶劣态度。陶成章虽然不是被章太炎直接杀害的，但是，章太炎对于陶成章鼓动激励的捧杀表现，在一定程度上决定了陶成章的悲剧命运。关于这一点，章太炎在《自定年谱》的1910年项下，另有更加露骨也更加荒诞的历史叙述：“焕卿数言克强得伯先，事或可就，逸仙似无成者。余谓：‘集党数年，未有规画，恐诒之后人耳。然清自袁世凯废、张之洞死，宗室用事，人民胥怨，固不能久。粤人好利而无兵略，湘中朴气衰矣，亦未必属孙、黄也。君以光复会号召，所谓自靖自献，成败利钝，谁能知之。”\r\n把章太炎鼓动激励陶成章的这段话语解释得通俗一点，意思就是：广东的孙中山和湖南的黄兴，未必能够奉天承运得天下；以光复会相号召的陶成章，只要能够打定主意独立自主、努力进取，未必就不能够奉天承运得天下。\r\n章太炎这种生前先捧杀、死后再骂杀的推卸罪责、嫁祸于人、颠倒反复、自相矛盾的恶劣态度，在四川籍革命先驱邹容身上和湖南籍同盟会首领宋教仁身上，也有过高度类同的相关表现。回顾历史，固守传统国学的章太炎，在最为基本的人情事理方面，一直都是讲不通、站不住的。他缺乏一整套相对系统的价值谱系和逻辑关联的国学见解，运用到现代文明社会极其复杂的市场经济及其制度建设方面，只能是败事有余而成事不足。\r\n1912年10月10日，是中华民国第一个国庆纪念日。上海《神州日报》以《光复会继起之领袖陶焕卿君事略》为标题，刊登了光复会会长章太炎的口述实录，并且特别注明：“太炎口授，寂照笔述。时为陶君被匪徒戕害之次日。”\r\n陶成章遇害的次日即1912年1月15日。章太炎及《神州日报》之所以没有在第一时间公开刊登针对孙中山、陈其美、胡汉民、黄兴等人直接点名的口述实录，主要原因是慑于临时大总统孙中山和沪军都督陈其美的强势权威。章太炎在这篇文章中写道：“会稽陶焕卿，讳成章，光复会中最重要之一会员。……未几，孙文归，被举为临时大总统，就任后，即与陶君书，诘问从前宣布罪状之理由，谓予非以大总统资地与汝交涉，乃以个人资地与汝交涉。书到之日，阴历十一月二十三日也。其后三日，陶即于广慈医院被人刺死。”\r\n\r\n到了1928年，章太炎在《自定年谱》1912年项下写道：“初，赵伯先之死，未有疑克强者也，焕卿不能分别，并恶之。至是，日与黄、陈不合，自设光复军总司令部于上海，募兵。余告之曰：‘江南军事已罢，招募无名。丈夫当有远志，不宜与人争权于蜗角间。武昌方亟，君当就蛰仙乞千余人上援，大义所在，蛰仙不能却也。如此既以避逼，且可有功。恋此不去，必危其身。’焕卿不从，果被刺死。或言英士为之也。”\r\n这里的赵伯先即光复会与同盟会的双重会员赵声。蛰仙即时任浙江都督的汤寿潜。在这段话中，以所谓国学大师自居的章太炎，至少编造了四项谎言：\r\n其一，赵声之死，光复会方面的章太炎、陶成章等人所怀疑的是胡汉民而不是黄克强即黄兴。辛亥革命前后与同盟会方面的孙中山、黄兴、陈其美等人采取不合作态度的，也不只是光复会副会长陶成章，光复会会长章太炎表现得更加锋芒毕露、旗帜鲜明。\r\n其二，陶成章当年并没有在上海设立光复军总司令部，而只是设立了“光复义勇军练兵筹饷局”。在此之前，光复会军事领导人李燮和，已经在吴淞设立光复军总司令部。\r\n其三，陶成章在上海设立“光复义勇军练兵筹饷局”时，正是苏浙联军会攻南京的关键时刻。1911年11月29日早晨，张勋在火炮配合下亲自带领精锐部队出城与驻守孝陵卫的浙军决战，正是由于王任化奉陶成章命令从浙江台州招募的一营光复义勇军及时赶到，才挽救了苏浙联军的一场败局。章太炎所谓“江南军事已罢，招募无名……恋此不去，必危其身”，分明是对于惨遭杀害的陶成章的栽赃抹黑。\r\n其四，章太炎之所以要蓄意栽赃抹黑陶成章，是因为他急于推卸洗白自己所犯下的明显捧杀陶成章的历史罪责。他所谓的“焕卿不从，果被刺死”，完全是“欲加其罪，何患无辞”的“莫须有”。\r\n据魏兰写作于1912年8月6日的《陶焕卿先生行述》介绍，陶成章起初听到陈其美要派人刺杀他的江湖传言时，并没有特别在意，直到王文庆从南京写信通报相关信息，他才意识到事态严峻。于是，他先是到客利旅馆躲避，由于光复会会务繁忙，他不得不从客利旅馆迁移到“国民联合会”。光复会方面的会党同志认为这里人员来往过于繁杂，建议陶成章迁移到位于江西路的光复会秘密机关所。第二天，陶成章又迁移到更加隐秘的汇中旅馆。1911年12月29日，同盟会员在上海汇中旅馆宴请从海外回国的孙中山，陶成章在饭厅里意外遇到脱离光复会而加入同盟会的绍兴军政府都督王金发、浙江军政府政事部长褚辅成等人。12月30日，暴露行踪的陶成章只好以治病为借口，从汇中旅馆躲进位于上海法租界的广慈医院。\r\n在陶成章一再通过消极退让以保全性命的情况下，浙江都督的人选问题把他推到风口浪尖。1912年1月3日，南京临时政府通过各部总次长名单，名单中的交通总长一职由浙江都督汤寿潜出任。汤寿潜在卸任浙江都督的同时，推荐章太炎、陶成章、陈其美为继任人选。1月7日，已经感受到生命危险的陶成章，在同盟会的上海机关报《民立报》上发表通告：“当南京未破前，旧同事招仆者，多以练兵、筹饷问题就商于仆，仆未尝敢有所推诿。逮南京破后，仆以东南大局粗定，爰函知各同事，请将一切事宜商之各军政分府及杭州军政府，以便事权统一，请勿以仆一人名义号召四方，是所至祷！恐函告未周，用再登报声明。”\r\n同样是在1月7日，章太炎没有征得陶成章同意，便在“皓”电中为其评功摆好、争权夺位：“蜇公举炳麟及陶焕卿、陈英士代理浙事。英士志在北伐，炳麟愿作民党，焕卿奔走国事，险阻艰难，十年如一日。此次下江光复，微李燮和，上海不举；微朱价人，南京不下；而我浙之得力于敢死队者甚多，是皆焕卿平日经营联合之力。且浙中会党潜势，尤非焕卿不能拊慰。鄙意若令代理浙事，得诸公全力以助，必为吾浙之福。”\r\n​\r\n\r\n（章太炎、陶成章）\r\n1月8日，章太炎专门致电汤寿潜，再次表白自己“天性耿介，惟愿处于民党地位”；进而吹捧陶成章“其功非独在浙江一省。代理浙事，微斯人谁与归？”\r\n陶成章对于章太炎极端情绪化的吹捧推荐并不领情，他在随后的公开通电中转而推荐光复会与同盟会的双重会员、此前担任广东方面的混成协协统和军政部长的蒋尊簋继任都督：“仆自维辁才，恐负重任。如汤公难留，则继之者非蒋军统莫属，请合力劝驾，以维大局。”\r\n即使如此，同盟会方面的陈其美、蒋介石等人依然不肯放过陶成章。1月12日，陶成章的这份通电在《民立报》公开发表。1月14日凌晨，陶成章便倒在了蒋介石、王竹卿、陈锡奎、刘永顺等人参与组织的暗杀行动之中。\r\n所谓捧杀的原始出处，源于《风俗通》的“长吏马肥，观者快之，乘者喜其言，驰驱不已，至于死”。1919年5月9日，时任北京大学校长的光复会创始会长蔡元培，在“五四运动”的关键时刻急流勇退，在其辞职启示中巧妙引用这一典故说：“吾倦矣，杀君马者道旁儿。”意思是杀死你的快马的，就是在旁边给你鼓掌叫好的那些人。章太炎的国学弟子鲁迅专门有过一篇杂文《骂杀与捧杀》，其中写道：“现在被骂杀的少，被捧杀的却多。……以学者或诗人的招牌，来批评或介绍一个作者，开初是很能够蒙混旁人的，但待到旁人看清了这作者的真相的时候，却只剩了他自己的不诚恳，或学识的不够了。然而如果没有旁人来指明真相呢，这作家就从此被捧杀，不知道要多少年后才翻身。”\r\n就章太炎来说，他对于昔日战友陶成章的相关表现，正是这样一种生前先捧杀、死后再骂杀的推卸罪责、嫁祸于人、颠倒反复、自相矛盾的恶劣态度。陶成章虽然不是被章太炎直接杀害的，但是，章太炎对于陶成章鼓动激励的捧杀表现，在一定程度上决定了陶成章的悲剧命运。关于这一点，章太炎在《自定年谱》的1910年项下，另有更加露骨也更加荒诞的历史叙述：“焕卿数言克强得伯先，事或可就，逸仙似无成者。余谓：‘集党数年，未有规画，恐诒之后人耳。然清自袁世凯废、张之洞死，宗室用事，人民胥怨，固不能久。粤人好利而无兵略，湘中朴气衰矣，亦未必属孙、黄也。君以光复会号召，所谓自靖自献，成败利钝，谁能知之。”\r\n把章太炎鼓动激励陶成章的这段话语解释得通俗一点，意思就是：广东的孙中山和湖南的黄兴，未必能够奉天承运得天下；以光复会相号召的陶成章，只要能够打定主意独立自主、努力进取，未必就不能够奉天承运得天下。\r\n章太炎这种生前先捧杀、死后再骂杀的推卸罪责、嫁祸于人、颠倒反复、自相矛盾的恶劣态度，在四川籍革命先驱邹容身上和湖南籍同盟会首领宋教仁身上，也有过高度类同的相关表现。回顾历史，固守传统国学的章太炎，在最为基本的人情事理方面，一直都是讲不通、站不住的。他缺乏一整套相对系统的价值谱系和逻辑关联的国学见解，运用到现代文明社会极其复杂的市场经济及其制度建设方面，只能是败事有余而成事不足。\r\n1912年10月10日，是中华民国第一个国庆纪念日。上海《神州日报》以《光复会继起之领袖陶焕卿君事略》为标题，刊登了光复会会长章太炎的口述实录，并且特别注明：“太炎口授，寂照笔述。时为陶君被匪徒戕害之次日。”\r\n陶成章遇害的次日即1912年1月15日。章太炎及《神州日报》之所以没有在第一时间公开刊登针对孙中山、陈其美、胡汉民、黄兴等人直接点名的口述实录，主要原因是慑于临时大总统孙中山和沪军都督陈其美的强势权威。章太炎在这篇文章中写道：“会稽陶焕卿，讳成章，光复会中最重要之一会员。……未几，孙文归，被举为临时大总统，就任后，即与陶君书，诘问从前宣布罪状之理由，谓予非以大总统资地与汝交涉，乃以个人资地与汝交涉。书到之日，阴历十一月二十三日也。其后三日，陶即于广慈医院被人刺死。”\r\n\r\n到了1928年，章太炎在《自定年谱》1912年项下写道：“初，赵伯先之死，未有疑克强者也，焕卿不能分别，并恶之。至是，日与黄、陈不合，自设光复军总司令部于上海，募兵。余告之曰：‘江南军事已罢，招募无名。丈夫当有远志，不宜与人争权于蜗角间。武昌方亟，君当就蛰仙乞千余人上援，大义所在，蛰仙不能却也。如此既以避逼，且可有功。恋此不去，必危其身。’焕卿不从，果被刺死。或言英士为之也。”\r\n这里的赵伯先即光复会与同盟会的双重会员赵声。蛰仙即时任浙江都督的汤寿潜。在这段话中，以所谓国学大师自居的章太炎，至少编造了四项谎言：\r\n其一，赵声之死，光复会方面的章太炎、陶成章等人所怀疑的是胡汉民而不是黄克强即黄兴。辛亥革命前后与同盟会方面的孙中山、黄兴、陈其美等人采取不合作态度的，也不只是光复会副会长陶成章，光复会会长章太炎表现得更加锋芒毕露、旗帜鲜明。\r\n其二，陶成章当年并没有在上海设立光复军总司令部，而只是设立了“光复义勇军练兵筹饷局”。在此之前，光复会军事领导人李燮和，已经在吴淞设立光复军总司令部。\r\n其三，陶成章在上海设立“光复义勇军练兵筹饷局”时，正是苏浙联军会攻南京的关键时刻。1911年11月29日早晨，张勋在火炮配合下亲自带领精锐部队出城与驻守孝陵卫的浙军决战，正是由于王任化奉陶成章命令从浙江台州招募的一营光复义勇军及时赶到，才挽救了苏浙联军的一场败局。章太炎所谓“江南军事已罢，招募无名……恋此不去，必危其身”，分明是对于惨遭杀害的陶成章的栽赃抹黑。\r\n其四，章太炎之所以要蓄意栽赃抹黑陶成章，是因为他急于推卸洗白自己所犯下的明显捧杀陶成章的历史罪责。他所谓的“焕卿不从，果被刺死”，完全是“欲加其罪，何患无辞”的“莫须有”。\r\n据魏兰写作于1912年8月6日的《陶焕卿先生行述》介绍，陶成章起初听到陈其美要派人刺杀他的江湖传言时，并没有特别在意，直到王文庆从南京写信通报相关信息，他才意识到事态严峻。于是，他先是到客利旅馆躲避，由于光复会会务繁忙，他不得不从客利旅馆迁移到“国民联合会”。光复会方面的会党同志认为这里人员来往过于繁杂，建议陶成章迁移到位于江西路的光复会秘密机关所。第二天，陶成章又迁移到更加隐秘的汇中旅馆。1911年12月29日，同盟会员在上海汇中旅馆宴请从海外回国的孙中山，陶成章在饭厅里意外遇到脱离光复会而加入同盟会的绍兴军政府都督王金发、浙江军政府政事部长褚辅成等人。12月30日，暴露行踪的陶成章只好以治病为借口，从汇中旅馆躲进位于上海法租界的广慈医院。\r\n在陶成章一再通过消极退让以保全性命的情况下，浙江都督的人选问题把他推到风口浪尖。1912年1月3日，南京临时政府通过各部总次长名单，名单中的交通总长一职由浙江都督汤寿潜出任。汤寿潜在卸任浙江都督的同时，推荐章太炎、陶成章、陈其美为继任人选。1月7日，已经感受到生命危险的陶成章，在同盟会的上海机关报《民立报》上发表通告：“当南京未破前，旧同事招仆者，多以练兵、筹饷问题就商于仆，仆未尝敢有所推诿。逮南京破后，仆以东南大局粗定，爰函知各同事，请将一切事宜商之各军政分府及杭州军政府，以便事权统一，请勿以仆一人名义号召四方，是所至祷！恐函告未周，用再登报声明。”\r\n同样是在1月7日，章太炎没有征得陶成章同意，便在“皓”电中为其评功摆好、争权夺位：“蜇公举炳麟及陶焕卿、陈英士代理浙事。英士志在北伐，炳麟愿作民党，焕卿奔走国事，险阻艰难，十年如一日。此次下江光复，微李燮和，上海不举；微朱价人，南京不下；而我浙之得力于敢死队者甚多，是皆焕卿平日经营联合之力。且浙中会党潜势，尤非焕卿不能拊慰。鄙意若令代理浙事，得诸公全力以助，必为吾浙之福。”\r\n​\r\n\r\n（章太炎、陶成章）\r\n1月8日，章太炎专门致电汤寿潜，再次表白自己“天性耿介，惟愿处于民党地位”；进而吹捧陶成章“其功非独在浙江一省。代理浙事，微斯人谁与归？”\r\n陶成章对于章太炎极端情绪化的吹捧推荐并不领情，他在随后的公开通电中转而推荐光复会与同盟会的双重会员、此前担任广东方面的混成协协统和军政部长的蒋尊簋继任都督：“仆自维辁才，恐负重任。如汤公难留，则继之者非蒋军统莫属，请合力劝驾，以维大局。”\r\n即使如此，同盟会方面的陈其美、蒋介石等人依然不肯放过陶成章。1月12日，陶成章的这份通电在《民立报》公开发表。1月14日凌晨，陶成章便倒在了蒋介石、王竹卿、陈锡奎、刘永顺等人参与组织的暗杀行动之中。\r\n所谓捧杀的原始出处，源于《风俗通》的“长吏马肥，观者快之，乘者喜其言，驰驱不已，至于死”。1919年5月9日，时任北京大学校长的光复会创始会长蔡元培，在“五四运动”的关键时刻急流勇退，在其辞职启示中巧妙引用这一典故说：“吾倦矣，杀君马者道旁儿。”意思是杀死你的快马的，就是在旁边给你鼓掌叫好的那些人。章太炎的国学弟子鲁迅专门有过一篇杂文《骂杀与捧杀》，其中写道：“现在被骂杀的少，被捧杀的却多。……以学者或诗人的招牌，来批评或介绍一个作者，开初是很能够蒙混旁人的，但待到旁人看清了这作者的真相的时候，却只剩了他自己的不诚恳，或学识的不够了。然而如果没有旁人来指明真相呢，这作家就从此被捧杀，不知道要多少年后才翻身。”\r\n就章太炎来说，他对于昔日战友陶成章的相关表现，正是这样一种生前先捧杀、死后再骂杀的推卸罪责、嫁祸于人、颠倒反复、自相矛盾的恶劣态度。陶成章虽然不是被章太炎直接杀害的，但是，章太炎对于陶成章鼓动激励的捧杀表现，在一定程度上决定了陶成章的悲剧命运。关于这一点，章太炎在《自定年谱》的1910年项下，另有更加露骨也更加荒诞的历史叙述：“焕卿数言克强得伯先，事或可就，逸仙似无成者。余谓：‘集党数年，未有规画，恐诒之后人耳。然清自袁世凯废、张之洞死，宗室用事，人民胥怨，固不能久。粤人好利而无兵略，湘中朴气衰矣，亦未必属孙、黄也。君以光复会号召，所谓自靖自献，成败利钝，谁能知之。”\r\n把章太炎鼓动激励陶成章的这段话语解释得通俗一点，意思就是：广东的孙中山和湖南的黄兴，未必能够奉天承运得天下；以光复会相号召的陶成章，只要能够打定主意独立自主、努力进取，未必就不能够奉天承运得天下。\r\n章太炎这种生前先捧杀、死后再骂杀的推卸罪责、嫁祸于人、颠倒反复、自相矛盾的恶劣态度，在四川籍革命先驱邹容身上和湖南籍同盟会首领宋教仁身上，也有过高度类同的相关表现。回顾历史，固守传统国学的章太炎，在最为基本的人情事理方面，一直都是讲不通、站不住的。他缺乏一整套相对系统的价值谱系和逻辑关联的国学见解，运用到现代文明社会极其复杂的市场经济及其制度建设方面，只能是败事有余而成事不足。\r\n		2015-10-31	10	dfnasjfnsdfsafsafsafsafasfasfasfafsdfsafadsfsa
+\.
+
+
+--
+-- Name: blog_page_id_seq; Type: SEQUENCE SET; Schema: public; Owner: bigfeng
+--
+
+SELECT pg_catalog.setval('blog_page_id_seq', 3, true);
+
+
+--
+-- Data for Name: blog_pageimage; Type: TABLE DATA; Schema: public; Owner: bigfeng
+--
+
+COPY blog_pageimage (id, page_id, image) FROM stdin;
+2	2	media/15/10/31/微博图片.jpg
+\.
+
+
+--
+-- Name: blog_pageimage_id_seq; Type: SEQUENCE SET; Schema: public; Owner: bigfeng
+--
+
+SELECT pg_catalog.setval('blog_pageimage_id_seq', 2, true);
+
+
+--
+-- Data for Name: django_admin_log; Type: TABLE DATA; Schema: public; Owner: bigfeng
+--
+
+COPY django_admin_log (id, action_time, object_id, object_repr, action_flag, change_message, content_type_id, user_id) FROM stdin;
+1	2015-10-31 09:44:51.466556+08	1	niahao	1		9	1
+2	2015-10-31 09:46:07.242801+08	2	niahao	1		9	1
+3	2015-10-31 09:48:03.046284+08	1	niahao	3		9	1
+4	2015-10-31 09:49:40.497713+08	3	saf	1		9	1
+5	2015-10-31 20:00:14.899548+08	1	置顶	1		7	1
+6	2015-10-31 20:00:20.90378+08	2	推荐	1		7	1
+7	2015-10-31 20:01:10.184514+08	1	置顶文章	2	Changed name.	7	1
+8	2015-10-31 20:01:16.943071+08	2	推荐文章	2	Changed name.	7	1
+9	2015-10-31 20:31:34.003868+08	3	叫我序员就行	1		7	1
+10	2015-10-31 20:32:35.449318+08	4	见好就收	1		7	1
+11	2015-10-31 20:49:57.426912+08	3	saf	2	Added page image "PageImage object".	9	1
+12	2015-10-31 20:51:00.062163+08	3	saf	2	Deleted page image "PageImage object".	9	1
+13	2015-10-31 20:51:19.567986+08	2	niahao	2	Changed summary. Added page image "PageImage object".	9	1
+14	2015-10-31 20:52:25.54099+08	2	niahao	2	No fields changed.	9	1
+15	2015-10-31 20:52:34.925511+08	1	saf	1		10	1
+16	2015-10-31 20:53:34.495248+08	1	niahao	2	Changed page.	10	1
+17	2015-10-31 20:54:14.698299+08	1	niahao	2	No fields changed.	10	1
+18	2015-10-31 20:54:25.669656+08	1	saf	2	Changed page.	10	1
+19	2015-10-31 21:14:19.156159+08	2	niahao	2	Changed content.	9	1
+20	2015-10-31 21:19:59.049737+08	2	niahao	2	Changed content.	9	1
+\.
+
+
+--
+-- Name: django_admin_log_id_seq; Type: SEQUENCE SET; Schema: public; Owner: bigfeng
+--
+
+SELECT pg_catalog.setval('django_admin_log_id_seq', 20, true);
+
+
+--
+-- Data for Name: django_content_type; Type: TABLE DATA; Schema: public; Owner: bigfeng
+--
+
+COPY django_content_type (id, app_label, model) FROM stdin;
+1	admin	logentry
+2	auth	permission
+3	auth	group
+4	auth	user
+5	contenttypes	contenttype
+6	sessions	session
+7	blog	category
+8	blog	pageimage
+9	blog	page
+10	blog	indexcover
+\.
+
+
+--
+-- Name: django_content_type_id_seq; Type: SEQUENCE SET; Schema: public; Owner: bigfeng
+--
+
+SELECT pg_catalog.setval('django_content_type_id_seq', 10, true);
+
+
+--
+-- Data for Name: django_migrations; Type: TABLE DATA; Schema: public; Owner: bigfeng
+--
+
+COPY django_migrations (id, app, name, applied) FROM stdin;
+1	contenttypes	0001_initial	2015-10-30 10:26:51.126957+08
+2	auth	0001_initial	2015-10-30 10:26:51.180813+08
+3	admin	0001_initial	2015-10-30 10:26:51.201763+08
+4	contenttypes	0002_remove_content_type_name	2015-10-30 10:26:51.241986+08
+5	auth	0002_alter_permission_name_max_length	2015-10-30 10:26:51.254583+08
+6	auth	0003_alter_user_email_max_length	2015-10-30 10:26:51.266532+08
+7	auth	0004_alter_user_username_opts	2015-10-30 10:26:51.277928+08
+8	auth	0005_alter_user_last_login_null	2015-10-30 10:26:51.291308+08
+9	auth	0006_require_contenttypes_0002	2015-10-30 10:26:51.292951+08
+10	sessions	0001_initial	2015-10-30 10:26:51.300748+08
+\.
+
+
+--
+-- Name: django_migrations_id_seq; Type: SEQUENCE SET; Schema: public; Owner: bigfeng
+--
+
+SELECT pg_catalog.setval('django_migrations_id_seq', 10, true);
+
+
+--
+-- Data for Name: django_session; Type: TABLE DATA; Schema: public; Owner: bigfeng
+--
+
+COPY django_session (session_key, session_data, expire_date) FROM stdin;
+4gytzxvoumhkbey6px8fcma4pvg7gqq7	ZDViOTI5MzIzYWVmYjQxZDU0YjFhN2RlMzVhOTM0ZjE2ODgxMDRkNDp7Il9hdXRoX3VzZXJfaWQiOiIxIiwiX2F1dGhfdXNlcl9oYXNoIjoiOTdhM2I3YTI5MjIyOWNhNmE1ZGU3MjhkNWUyNDRmYjMxNmJmYzJhZSIsIl9hdXRoX3VzZXJfYmFja2VuZCI6ImRqYW5nby5jb250cmliLmF1dGguYmFja2VuZHMuTW9kZWxCYWNrZW5kIn0=	2015-11-13 10:29:45.769679+08
+\.
+
+
+--
+-- Name: auth_group_name_key; Type: CONSTRAINT; Schema: public; Owner: bigfeng; Tablespace: 
+--
+
+ALTER TABLE ONLY auth_group
+    ADD CONSTRAINT auth_group_name_key UNIQUE (name);
+
+
+--
+-- Name: auth_group_permissions_group_id_permission_id_key; Type: CONSTRAINT; Schema: public; Owner: bigfeng; Tablespace: 
+--
+
+ALTER TABLE ONLY auth_group_permissions
+    ADD CONSTRAINT auth_group_permissions_group_id_permission_id_key UNIQUE (group_id, permission_id);
+
+
+--
+-- Name: auth_group_permissions_pkey; Type: CONSTRAINT; Schema: public; Owner: bigfeng; Tablespace: 
+--
+
+ALTER TABLE ONLY auth_group_permissions
+    ADD CONSTRAINT auth_group_permissions_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: auth_group_pkey; Type: CONSTRAINT; Schema: public; Owner: bigfeng; Tablespace: 
+--
+
+ALTER TABLE ONLY auth_group
+    ADD CONSTRAINT auth_group_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: auth_permission_content_type_id_codename_key; Type: CONSTRAINT; Schema: public; Owner: bigfeng; Tablespace: 
+--
+
+ALTER TABLE ONLY auth_permission
+    ADD CONSTRAINT auth_permission_content_type_id_codename_key UNIQUE (content_type_id, codename);
+
+
+--
+-- Name: auth_permission_pkey; Type: CONSTRAINT; Schema: public; Owner: bigfeng; Tablespace: 
+--
+
+ALTER TABLE ONLY auth_permission
+    ADD CONSTRAINT auth_permission_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: auth_user_groups_pkey; Type: CONSTRAINT; Schema: public; Owner: bigfeng; Tablespace: 
+--
+
+ALTER TABLE ONLY auth_user_groups
+    ADD CONSTRAINT auth_user_groups_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: auth_user_groups_user_id_group_id_key; Type: CONSTRAINT; Schema: public; Owner: bigfeng; Tablespace: 
+--
+
+ALTER TABLE ONLY auth_user_groups
+    ADD CONSTRAINT auth_user_groups_user_id_group_id_key UNIQUE (user_id, group_id);
+
+
+--
+-- Name: auth_user_pkey; Type: CONSTRAINT; Schema: public; Owner: bigfeng; Tablespace: 
+--
+
+ALTER TABLE ONLY auth_user
+    ADD CONSTRAINT auth_user_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: auth_user_user_permissions_pkey; Type: CONSTRAINT; Schema: public; Owner: bigfeng; Tablespace: 
+--
+
+ALTER TABLE ONLY auth_user_user_permissions
+    ADD CONSTRAINT auth_user_user_permissions_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: auth_user_user_permissions_user_id_permission_id_key; Type: CONSTRAINT; Schema: public; Owner: bigfeng; Tablespace: 
+--
+
+ALTER TABLE ONLY auth_user_user_permissions
+    ADD CONSTRAINT auth_user_user_permissions_user_id_permission_id_key UNIQUE (user_id, permission_id);
+
+
+--
+-- Name: auth_user_username_key; Type: CONSTRAINT; Schema: public; Owner: bigfeng; Tablespace: 
+--
+
+ALTER TABLE ONLY auth_user
+    ADD CONSTRAINT auth_user_username_key UNIQUE (username);
+
+
+--
+-- Name: blog_category_order_key; Type: CONSTRAINT; Schema: public; Owner: bigfeng; Tablespace: 
+--
+
+ALTER TABLE ONLY blog_category
+    ADD CONSTRAINT blog_category_order_key UNIQUE ("order");
+
+
+--
+-- Name: blog_category_pages_category_id_page_id_key; Type: CONSTRAINT; Schema: public; Owner: bigfeng; Tablespace: 
+--
+
+ALTER TABLE ONLY blog_category_pages
+    ADD CONSTRAINT blog_category_pages_category_id_page_id_key UNIQUE (category_id, page_id);
+
+
+--
+-- Name: blog_category_pages_pkey; Type: CONSTRAINT; Schema: public; Owner: bigfeng; Tablespace: 
+--
+
+ALTER TABLE ONLY blog_category_pages
+    ADD CONSTRAINT blog_category_pages_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: blog_category_pkey; Type: CONSTRAINT; Schema: public; Owner: bigfeng; Tablespace: 
+--
+
+ALTER TABLE ONLY blog_category
+    ADD CONSTRAINT blog_category_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: blog_indexcover_page_id_key; Type: CONSTRAINT; Schema: public; Owner: bigfeng; Tablespace: 
+--
+
+ALTER TABLE ONLY blog_indexcover
+    ADD CONSTRAINT blog_indexcover_page_id_key UNIQUE (page_id);
+
+
+--
+-- Name: blog_indexcover_pkey; Type: CONSTRAINT; Schema: public; Owner: bigfeng; Tablespace: 
+--
+
+ALTER TABLE ONLY blog_indexcover
+    ADD CONSTRAINT blog_indexcover_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: blog_page_pkey; Type: CONSTRAINT; Schema: public; Owner: bigfeng; Tablespace: 
+--
+
+ALTER TABLE ONLY blog_page
+    ADD CONSTRAINT blog_page_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: blog_pageimage_pkey; Type: CONSTRAINT; Schema: public; Owner: bigfeng; Tablespace: 
+--
+
+ALTER TABLE ONLY blog_pageimage
+    ADD CONSTRAINT blog_pageimage_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: django_admin_log_pkey; Type: CONSTRAINT; Schema: public; Owner: bigfeng; Tablespace: 
+--
+
+ALTER TABLE ONLY django_admin_log
+    ADD CONSTRAINT django_admin_log_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: django_content_type_app_label_59b0be5bbca9288c_uniq; Type: CONSTRAINT; Schema: public; Owner: bigfeng; Tablespace: 
+--
+
+ALTER TABLE ONLY django_content_type
+    ADD CONSTRAINT django_content_type_app_label_59b0be5bbca9288c_uniq UNIQUE (app_label, model);
+
+
+--
+-- Name: django_content_type_pkey; Type: CONSTRAINT; Schema: public; Owner: bigfeng; Tablespace: 
+--
+
+ALTER TABLE ONLY django_content_type
+    ADD CONSTRAINT django_content_type_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: django_migrations_pkey; Type: CONSTRAINT; Schema: public; Owner: bigfeng; Tablespace: 
+--
+
+ALTER TABLE ONLY django_migrations
+    ADD CONSTRAINT django_migrations_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: django_session_pkey; Type: CONSTRAINT; Schema: public; Owner: bigfeng; Tablespace: 
+--
+
+ALTER TABLE ONLY django_session
+    ADD CONSTRAINT django_session_pkey PRIMARY KEY (session_key);
+
+
+--
+-- Name: auth_group_name_7e457b46bd6f133a_like; Type: INDEX; Schema: public; Owner: bigfeng; Tablespace: 
+--
+
+CREATE INDEX auth_group_name_7e457b46bd6f133a_like ON auth_group USING btree (name varchar_pattern_ops);
+
+
+--
+-- Name: auth_group_permissions_0e939a4f; Type: INDEX; Schema: public; Owner: bigfeng; Tablespace: 
+--
+
+CREATE INDEX auth_group_permissions_0e939a4f ON auth_group_permissions USING btree (group_id);
+
+
+--
+-- Name: auth_group_permissions_8373b171; Type: INDEX; Schema: public; Owner: bigfeng; Tablespace: 
+--
+
+CREATE INDEX auth_group_permissions_8373b171 ON auth_group_permissions USING btree (permission_id);
+
+
+--
+-- Name: auth_permission_417f1b1c; Type: INDEX; Schema: public; Owner: bigfeng; Tablespace: 
+--
+
+CREATE INDEX auth_permission_417f1b1c ON auth_permission USING btree (content_type_id);
+
+
+--
+-- Name: auth_user_groups_0e939a4f; Type: INDEX; Schema: public; Owner: bigfeng; Tablespace: 
+--
+
+CREATE INDEX auth_user_groups_0e939a4f ON auth_user_groups USING btree (group_id);
+
+
+--
+-- Name: auth_user_groups_e8701ad4; Type: INDEX; Schema: public; Owner: bigfeng; Tablespace: 
+--
+
+CREATE INDEX auth_user_groups_e8701ad4 ON auth_user_groups USING btree (user_id);
+
+
+--
+-- Name: auth_user_user_permissions_8373b171; Type: INDEX; Schema: public; Owner: bigfeng; Tablespace: 
+--
+
+CREATE INDEX auth_user_user_permissions_8373b171 ON auth_user_user_permissions USING btree (permission_id);
+
+
+--
+-- Name: auth_user_user_permissions_e8701ad4; Type: INDEX; Schema: public; Owner: bigfeng; Tablespace: 
+--
+
+CREATE INDEX auth_user_user_permissions_e8701ad4 ON auth_user_user_permissions USING btree (user_id);
+
+
+--
+-- Name: auth_user_username_4df2ed09430818fe_like; Type: INDEX; Schema: public; Owner: bigfeng; Tablespace: 
+--
+
+CREATE INDEX auth_user_username_4df2ed09430818fe_like ON auth_user USING btree (username varchar_pattern_ops);
+
+
+--
+-- Name: blog_category_pages_1a63c800; Type: INDEX; Schema: public; Owner: bigfeng; Tablespace: 
+--
+
+CREATE INDEX blog_category_pages_1a63c800 ON blog_category_pages USING btree (page_id);
+
+
+--
+-- Name: blog_category_pages_b583a629; Type: INDEX; Schema: public; Owner: bigfeng; Tablespace: 
+--
+
+CREATE INDEX blog_category_pages_b583a629 ON blog_category_pages USING btree (category_id);
+
+
+--
+-- Name: blog_page_2dbcba41; Type: INDEX; Schema: public; Owner: bigfeng; Tablespace: 
+--
+
+CREATE INDEX blog_page_2dbcba41 ON blog_page USING btree (slug);
+
+
+--
+-- Name: blog_page_slug_719b9df573aa0cc5_like; Type: INDEX; Schema: public; Owner: bigfeng; Tablespace: 
+--
+
+CREATE INDEX blog_page_slug_719b9df573aa0cc5_like ON blog_page USING btree (slug varchar_pattern_ops);
+
+
+--
+-- Name: blog_pageimage_1a63c800; Type: INDEX; Schema: public; Owner: bigfeng; Tablespace: 
+--
+
+CREATE INDEX blog_pageimage_1a63c800 ON blog_pageimage USING btree (page_id);
+
+
+--
+-- Name: django_admin_log_417f1b1c; Type: INDEX; Schema: public; Owner: bigfeng; Tablespace: 
+--
+
+CREATE INDEX django_admin_log_417f1b1c ON django_admin_log USING btree (content_type_id);
+
+
+--
+-- Name: django_admin_log_e8701ad4; Type: INDEX; Schema: public; Owner: bigfeng; Tablespace: 
+--
+
+CREATE INDEX django_admin_log_e8701ad4 ON django_admin_log USING btree (user_id);
+
+
+--
+-- Name: django_session_de54fa62; Type: INDEX; Schema: public; Owner: bigfeng; Tablespace: 
+--
+
+CREATE INDEX django_session_de54fa62 ON django_session USING btree (expire_date);
+
+
+--
+-- Name: django_session_session_key_63e7e05a2ec7ab01_like; Type: INDEX; Schema: public; Owner: bigfeng; Tablespace: 
+--
+
+CREATE INDEX django_session_session_key_63e7e05a2ec7ab01_like ON django_session USING btree (session_key varchar_pattern_ops);
+
+
+--
+-- Name: auth_content_type_id_754ea63f4629b97b_fk_django_content_type_id; Type: FK CONSTRAINT; Schema: public; Owner: bigfeng
+--
+
+ALTER TABLE ONLY auth_permission
+    ADD CONSTRAINT auth_content_type_id_754ea63f4629b97b_fk_django_content_type_id FOREIGN KEY (content_type_id) REFERENCES django_content_type(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+--
+-- Name: auth_group_permissio_group_id_5dcb136d1f519c53_fk_auth_group_id; Type: FK CONSTRAINT; Schema: public; Owner: bigfeng
+--
+
+ALTER TABLE ONLY auth_group_permissions
+    ADD CONSTRAINT auth_group_permissio_group_id_5dcb136d1f519c53_fk_auth_group_id FOREIGN KEY (group_id) REFERENCES auth_group(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+--
+-- Name: auth_group_permission_id_273f9f2ca183181d_fk_auth_permission_id; Type: FK CONSTRAINT; Schema: public; Owner: bigfeng
+--
+
+ALTER TABLE ONLY auth_group_permissions
+    ADD CONSTRAINT auth_group_permission_id_273f9f2ca183181d_fk_auth_permission_id FOREIGN KEY (permission_id) REFERENCES auth_permission(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+--
+-- Name: auth_user__permission_id_345082875635f971_fk_auth_permission_id; Type: FK CONSTRAINT; Schema: public; Owner: bigfeng
+--
+
+ALTER TABLE ONLY auth_user_user_permissions
+    ADD CONSTRAINT auth_user__permission_id_345082875635f971_fk_auth_permission_id FOREIGN KEY (permission_id) REFERENCES auth_permission(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+--
+-- Name: auth_user_groups_group_id_c1f5d6c1e5e62ad_fk_auth_group_id; Type: FK CONSTRAINT; Schema: public; Owner: bigfeng
+--
+
+ALTER TABLE ONLY auth_user_groups
+    ADD CONSTRAINT auth_user_groups_group_id_c1f5d6c1e5e62ad_fk_auth_group_id FOREIGN KEY (group_id) REFERENCES auth_group(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+--
+-- Name: auth_user_groups_user_id_aa492ec4104a16e_fk_auth_user_id; Type: FK CONSTRAINT; Schema: public; Owner: bigfeng
+--
+
+ALTER TABLE ONLY auth_user_groups
+    ADD CONSTRAINT auth_user_groups_user_id_aa492ec4104a16e_fk_auth_user_id FOREIGN KEY (user_id) REFERENCES auth_user(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+--
+-- Name: auth_user_user_permiss_user_id_2c4111a5668ef68c_fk_auth_user_id; Type: FK CONSTRAINT; Schema: public; Owner: bigfeng
+--
+
+ALTER TABLE ONLY auth_user_user_permissions
+    ADD CONSTRAINT auth_user_user_permiss_user_id_2c4111a5668ef68c_fk_auth_user_id FOREIGN KEY (user_id) REFERENCES auth_user(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+--
+-- Name: blog_category__category_id_3bd50173898144da_fk_blog_category_id; Type: FK CONSTRAINT; Schema: public; Owner: bigfeng
+--
+
+ALTER TABLE ONLY blog_category_pages
+    ADD CONSTRAINT blog_category__category_id_3bd50173898144da_fk_blog_category_id FOREIGN KEY (category_id) REFERENCES blog_category(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+--
+-- Name: blog_category_pages_page_id_2292ae56babba000_fk_blog_page_id; Type: FK CONSTRAINT; Schema: public; Owner: bigfeng
+--
+
+ALTER TABLE ONLY blog_category_pages
+    ADD CONSTRAINT blog_category_pages_page_id_2292ae56babba000_fk_blog_page_id FOREIGN KEY (page_id) REFERENCES blog_page(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+--
+-- Name: blog_indexcover_page_id_7b363e6468ef971b_fk_blog_page_id; Type: FK CONSTRAINT; Schema: public; Owner: bigfeng
+--
+
+ALTER TABLE ONLY blog_indexcover
+    ADD CONSTRAINT blog_indexcover_page_id_7b363e6468ef971b_fk_blog_page_id FOREIGN KEY (page_id) REFERENCES blog_page(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+--
+-- Name: blog_pageimage_page_id_61f743cefe616e89_fk_blog_page_id; Type: FK CONSTRAINT; Schema: public; Owner: bigfeng
+--
+
+ALTER TABLE ONLY blog_pageimage
+    ADD CONSTRAINT blog_pageimage_page_id_61f743cefe616e89_fk_blog_page_id FOREIGN KEY (page_id) REFERENCES blog_page(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+--
+-- Name: djang_content_type_id_8efbf3d80f0c1bd_fk_django_content_type_id; Type: FK CONSTRAINT; Schema: public; Owner: bigfeng
+--
+
+ALTER TABLE ONLY django_admin_log
+    ADD CONSTRAINT djang_content_type_id_8efbf3d80f0c1bd_fk_django_content_type_id FOREIGN KEY (content_type_id) REFERENCES django_content_type(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+--
+-- Name: django_admin_log_user_id_63479a377eba1b7_fk_auth_user_id; Type: FK CONSTRAINT; Schema: public; Owner: bigfeng
+--
+
+ALTER TABLE ONLY django_admin_log
+    ADD CONSTRAINT django_admin_log_user_id_63479a377eba1b7_fk_auth_user_id FOREIGN KEY (user_id) REFERENCES auth_user(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+--
+-- Name: public; Type: ACL; Schema: -; Owner: fengyu
+--
+
+REVOKE ALL ON SCHEMA public FROM PUBLIC;
+REVOKE ALL ON SCHEMA public FROM fengyu;
+GRANT ALL ON SCHEMA public TO fengyu;
+GRANT ALL ON SCHEMA public TO PUBLIC;
+
+
+--
+-- PostgreSQL database dump complete
+--
+

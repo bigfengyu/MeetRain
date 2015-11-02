@@ -1,4 +1,5 @@
 from django import template
+from blog.models import *
 register = template.Library()
 
 @register.filter
@@ -25,3 +26,19 @@ def get_range( value ):
     Instead of 3 one may use the variable set in the views
   """
   return range( value )
+
+@register.filter
+def orderbycustom(tagitem):
+  if tagitem.normalOrder:
+    return tagitem.pages.all().order_by('id')
+  else:
+    return tagitem.pages.all().order_by('-id')
+
+#
+# @register.inclusion_tag('blog/elements/tagitem.html',takes_context=True)
+# def getPagesOfCat(context):
+#   Cat = context['tagitem']
+#   if Cat.normalOrder is True:
+#     return {'pages':Cat.pages.all().order_by('date')}
+#   else:
+#     return {'pages':Cat.pages.all().order_by('-date')}
