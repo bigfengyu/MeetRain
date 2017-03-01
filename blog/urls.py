@@ -3,7 +3,9 @@ from django.conf.urls import patterns, url
 from blog import views
 from django.conf.urls.static import static
 from django.conf import settings
+from django.views.generic.base import RedirectView
 urlpatterns = patterns('',
+					   url(r'^favicon\.ico$', RedirectView.as_view(url='/static/img/favicon.ico')),
                        url(r'^$',views.index,name='index'),
                        url(r'^page/(?P<slug>[-\w]+)/$',views.pageslug,name='pageslug'),
                        url(r'^page/$',views.pageid,name='pageid'),
