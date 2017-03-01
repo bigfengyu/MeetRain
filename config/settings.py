@@ -17,6 +17,13 @@ load_dotenv(os.path.join(os.path.dirname(__file__),'.env'))
 CKEDITOR_RESTRICT_BY_USER = True
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+def get_env_variable(var_name):
+    try:
+        return os.environ[var_name]
+    except KeyError:
+        error_msg = "Set the %s environment variable" % var_name
+        raise ImproperlyConfigured(error_msg)
+
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
@@ -25,7 +32,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'p$w&d77oi-y2=j)aopdni1%mg5m2cy(90r4m0!7e+%^l#(+lv&'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG =  True if get_env_variable('debug') == 'true' else False
 
 ALLOWED_HOSTS = [
     'thingstable.com',
@@ -88,12 +95,7 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
 # from django.core.exceptions import ImproperlyConfigured
-def get_env_variable(var_name):
-    try:
-        return os.environ[var_name]
-    except KeyError:
-        error_msg = "Set the %s environment variable" % var_name
-        raise ImproperlyConfigured(error_msg)
+
 
 DATABASES = {
     'default': {
@@ -128,12 +130,12 @@ STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 
 STATIC_PATH = STATIC_ROOT  = os.path.join(BASE_DIR,'static')
-MEDIA_PATH = EDIA_ROOT  = os.path.join(BASE_DIR,'media')
+MEDIA_PATH = MEDIA_ROOT  = os.path.join(BASE_DIR,'media')
 
 #STATIC_PATH = os.path.join(BASE_DIR,'static')
 #MEDIA_PATH = os.path.join(BASE_DIR,'media')
 
-STATICFILES_DIRS = (STATIC_PATH,)
+#STATICFILES_DIRS = (STATIC_PATH,)
 
 TIME_ZONE = 'Asia/Shanghai'
 
