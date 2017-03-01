@@ -47,7 +47,7 @@ def pageslug(request,slug):
 def pagerender(request,page):
     page.views += 1
     page.save()
-    dict = {'page':page}
+    dict = {'page':page,'path':request.build_absolute_uri()}
     return render(request,'blog/page.html',dict)
 
 
@@ -73,6 +73,6 @@ def get_more(request):
     return render(request, 'blog/elements/pageitem.html',{'pages':pages})
 
 def indexAbout(request):
-    return render(request,'blog/index/index_about.html')
+    return render(request,'blog/index/index_about.html',{'path':request.build_absolute_uri()})
 
 

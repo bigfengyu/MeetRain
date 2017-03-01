@@ -1,6 +1,7 @@
 {% extends "blog/index_base.html" %}
 {% load staticfiles %}
-{% block css %}
+{% block head %}
+    <title>逢雨 | 关于</title>
     <link rel="stylesheet" href="{% static "css/index_about.css" %}">
     <link rel="stylesheet" href="{% static "css/page.css" %}">
 
@@ -41,7 +42,7 @@
         </table>
     </div>
     <div class="comment">
-        {% include 'blog/elements/uyan.html' %}
+        {% include "blog/elements/duoshuo.html" with key="about" title="逢雨 | 关于" url=path %}
     </div>
     </div>
 {% endblock %}

@@ -1,7 +1,8 @@
 {% extends 'blog/base.html' %}
 {% load staticfiles %}
 {% load markdown_deux_tags %}
-{% block css %}
+{% block head %}
+    <title>逢雨 | {{page.title}}</title>
     <link rel="stylesheet" href="{% static "css/page.css" %}">
 {% endblock %}
 {% block main %}
@@ -16,8 +17,6 @@
         </div>
     </div>
     <div class="comment">
-{#        {% include 'blog/elements/disqus.html' %}#}
-        {% include "blog/elements/uyan.html" %}
-
+        {% include "blog/elements/duoshuo.html" with key=page.id title=page.title url=path %}
     </div>
 {% endblock %}

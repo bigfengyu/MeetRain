@@ -46,6 +46,8 @@ class Page(models.Model):
         else:
             return self.images.first().image.url
     def get_url(self):
+        if self.slug != "":
+            return "/blog/page/" + self.slug
         return "/blog/page?id=" + str(self.id)
     def __str__(self):
         return self.title
