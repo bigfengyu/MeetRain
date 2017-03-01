@@ -2,6 +2,7 @@ from django.db import models
 from django.utils import timezone
 from django.core.exceptions import ValidationError
 from django_markdown.models import MarkdownField
+
 def orderfill():
     last = Category.objects.all().aggregate(models.Max('order'))['order__max']
     if last is None:
@@ -22,6 +23,11 @@ class Category(models.Model):
 class PageImage(models.Model):
     page = models.ForeignKey('Page',related_name='images',verbose_name='属于文章')
     image = models.ImageField(upload_to="media/%y/%m/%d")
+
+class CoverImage(models.Model):
+    page = models.OneToOneField('Page',related_name='CoverImage',verbose_name='属于文章')
+    big = models.ImageField(upload_to="media/%y/%m/%d")
+    small = models.ImageField(upload_to="media/%y/%m/%d")
 
 
 class Page(models.Model):

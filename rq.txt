@@ -1,3 +1,4 @@
+python-dotenv==0.6.3
 Django==1.8.5
 django-ckeditor==5.0.2
 django-grappelli==2.7.1

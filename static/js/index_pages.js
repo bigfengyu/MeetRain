@@ -3,7 +3,7 @@
  */
 
 var boundClick = function(){$(".page").click(function(){
-   window.open($(this).find("a").attr("href"));
+   window.location.href = $(this).find("a").attr("href");
     //$(this).find("a")[0].click();
    return false;
 })};
