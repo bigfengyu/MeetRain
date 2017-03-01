@@ -19,9 +19,11 @@ from django.contrib import admin
 # handler404 = 'blog.views.notfound'
 from django.conf.urls.static import static
 from django.conf import settings
+from django.views.generic.base import RedirectView
 
 urlpatterns = [
-    url(r'^$',include('blog.urls')),
+    url(r'^favicon\.ico$', RedirectView.as_view(url='/static/img/favicon.ico')),
+    url(r'^$', RedirectView.as_view(url='/blog')),
     url(r'^grappelli/', include('grappelli.urls')),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^blog/',include('blog.urls')),
