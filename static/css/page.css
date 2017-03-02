@@ -45,7 +45,7 @@
 }
 
 .text p{
-    font: 15px/25px "lucida grande", "lucida sans unicode", lucida, helvetica, "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
+    font: 15px/25px;
     color: #333;
     text-align: justify;
     margin-bottom: 20px;
