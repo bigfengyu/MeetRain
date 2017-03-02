@@ -1,6 +1,6 @@
 {% load custom_tags %}
 {% with tagitem|orderbycustom as pages %}
-<div class="tagitem row{{ forloop.counter }}" data-tag-id="{{ tagitem.id }}">
+<div class="tagitem tag{{ forloop.counter }}" data-tag-id="{{ tagitem.id }}">
     <div class="tagnamewrapper" >
         <div class="tagimage">
         </div>
@@ -21,17 +21,17 @@
 
     </div>
             {% if pages|length <= 3%}
-                <div class="no_more btn">
+                <div class="no_more tagbtn">
                     <div class="border_top"></div>
                     <p>No more</p>
                 </div>
             {% else %}
-                <div class="get_more btn">
+                <div class="get_more tagbtn">
                     <div class="border_top"></div>
                     <p>More</p>
                 </div>
             {% endif %}
-    <div class="recover btn">
+    <div class="recover tagbtn">
         <div class="border_top"></div>
         <p>Collapse</p>
     </div>

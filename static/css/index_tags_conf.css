@@ -1,23 +1,8 @@
-/*.col1 .row1 .tagimage{*/
-    /*background: url("../img/top.png") center;*/
-    /*background-size: 300px 300px;*/
-
-/*}*/
-
-/*.col1 .row1 .tagimage:hover{*/
-    /*background-position: center;*/
-    /*background-size: 500px 500px;*/
-    /*transition: background-size 0.5s linear,opacity 0.5s linear;*/
-    /*opacity: 1;*/
-
-/*}*/
-
-
-.col1 .row1 .tagimage{
+.tag1 .tagimage{
     background: url("../img/kiss.jpg") -20px 0 no-repeat;
 }
 
-.col1 .row1 .tagimage:hover{
+.tag1 .tagimage:hover{
     background-position: -90px 0;
     transition:background-position 0.5s linear,opacity 0.5s linear;
     opacity: 1;
@@ -25,32 +10,32 @@
 
 
 
-.col2 .row1 .tagimage{
+.tag2 .tagimage{
     background: url("../img/coder.jpg") -441px -42px no-repeat;
 }
 
-.col2 .row1 .tagimage:hover{
+.tag2 .tagimage:hover{
     background-position: -300px -100px;
     transition:background-position 0.5s linear,opacity 0.5s linear;
     opacity: 1;
 }
 
-.col1 .row2 .tagimage{
+.tag3 .tagimage{
     background: url("../img/stackedbooks.jpg") -50px -250px no-repeat;
 }
 
-.col1 .row2 .tagimage:hover{
+.tag3 .tagimage:hover{
     background-position: -50px 0;
     transition:background-position 0.5s linear,opacity 0.2s linear;
     opacity: 1;
 }
 
-.col2 .row2 .tagimage{
+.tag4 .tagimage{
     background:url("../img/antiAmerica.jpg") repeat-x;
     background-size: cover;
 }
 
-.col2 .row2 .tagimage:hover{
+.tag4 .tagimage:hover{
     background-position: 526px 0px;
     transition:background-position 0.8s linear,opacity 0.5s linear;
     opacity: 1;

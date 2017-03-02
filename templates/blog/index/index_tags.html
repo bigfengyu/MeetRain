@@ -9,21 +9,13 @@
 {% endblock %}
 
 {% block main %}
+<div class="taglistwrapper">
     <div class="taglist clear">
-    {% with category|partition_col:"2" as parts  %}
-        <div class="column col1" id="col1">
-            {% for tagitem in parts|first %}
-                {% include 'blog/elements/tagitem.html' %}
-            {% endfor %}
-        </div>
-
-        <div class="column col2" id="col2">
-            {% for tagitem in parts|last %}
-                {% include 'blog/elements/tagitem.html' %}
-            {% endfor %}
-        </div>
-    {% endwith %}
+    {% for tagitem in category %}
+        {% include 'blog/elements/tagitem.html' %}
+    {% endfor %}
     </div>
+</div>
 {% endblock %}
 
 {% block js_end %}

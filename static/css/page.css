@@ -30,6 +30,10 @@
     text-align: left;
 }
 
+.text a {
+    color:#4073a2;
+}
+
 .text h1{
     font-family: "Palatino Linotype", "Book Antiqua", Palatino, Helvetica, STKaiti, SimSun, serif;
     font-size: 30px;
@@ -45,7 +49,8 @@
 }
 
 .text p{
-    font: 15px/25px;
+    font-size: 15px;
+    line-height: 25px;
     color: #333;
     text-align: justify;
     margin-bottom: 20px;

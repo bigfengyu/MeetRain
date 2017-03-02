@@ -1,32 +1,33 @@
+.taglistwrapper {
+    // text-align: center;
+    width: 100%;
+    // padding: 0 20px;
+}
+
 .taglist{
     font-size: 0;
 }
 
-.column{
+.tagitem{
     vertical-align: top;
     width: 300px;;
     display: inline-block;
 }
 
-.column a,p{
+.tagitem a,p{
     font-family: 'STHeiti','Microsoft YaHei';
     font-size: 16px;
 }
 
-.column h1{
+.tagitem h1{
     font-size: 30px;
 }
 
-
-#col1{
-    margin-right: 40px;;
-}
 
 .tagitem{
     vertical-align: top;
     width: 300px;
     position: relative;
-    margin:0 -4px 30px 0;
     display: inline-block;
     border: none;
 }
@@ -52,7 +53,6 @@
 
 .tagname h1{
     letter-spacing: 2px;
-    font-family: "PingFang SC";
     position: absolute;
     top: 134px;
     width: 300px;
@@ -73,7 +73,7 @@
     position: relative;
     min-height: 108px;
     padding-top:30px;
-    background-color: #fafafa;
+    background-color: #e1e1e1;
 }
 
 .overview .pagelink{
@@ -94,26 +94,32 @@
 
 
 
-.border_top{
-    width: 100px;
-    border-top: solid 1px #e1e1e1;
-    position: absolute;
-    top: 0;
-    left: 100px;
-}
+// .border_top{
+//     width: 100px;
+//     border-top: solid 1px #e1e1e1;
+//     position: absolute;
+//     top: 0;
+//     left: 100px;
+// }
 
-.btn {
+.tagbtn {
     position: relative;
     display: block;
     background-color: #fafafa;
     text-align: center;
     padding: 14px 10px 14px 10px;
     vertical-align: middle;
+    border: none;
 }
+
+// .get_more,.no_more {
+//     background-color: #e1e1e1;
+// }
 
 
 .get_more:hover,.recover:hover{
     background-color: #e1e1e1;
+    cursor: pointer;
 }
 
 .no_more{
