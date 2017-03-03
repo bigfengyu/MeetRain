@@ -5,7 +5,8 @@
 
 
 var getMorePagesInTags = function(){$(".get_more")
-    .click(function(){
+    .click(function(event){
+        event.preventDefault();
         $.get(
             function(e){
                 var lastPageID = $(e).prev().find('a').last().attr('page-id');
@@ -32,7 +33,8 @@ var getMorePagesInTags = function(){$(".get_more")
     )})};
 
 var recoverInTags = function(){$(".recover")
-    .click(function () {
+    .click(function (event) {
+        event.preventDefault();
         var overview = $(this).siblings('.overview');
         var container = overview.children().slice(3).slideUp('slow');
         setTimeout(function() {
