@@ -12,22 +12,32 @@
     background-repeat: no-repeat;
 }
 
-@media(max-width:500px){
-    .cover-image{
-        height: 200px;
-    }
-}
+
 
 .cover-title{
     position: absolute;
     left: 32px;
     bottom: 42px;
-    font: 26px/28px 'Microsoft YaHei','STHeiti';
+    font-size: 26px;
+    line-height: 28px;
     color: #fff;
     padding: 8px;
     background: rgba(0,0,0,0.6);
     background: #333\0;
     white-space: nowrap;
+}
+
+@media(max-width:600px){
+    .cover-image{
+        height: 200px;
+    }
+    .cover-title {
+        font-size: 13px;
+        line-height: 14px;
+        left: 0;
+        right: 0;
+        bottom: 0;
+    }
 }
 
 .items{
@@ -98,7 +108,7 @@
     padding-left:206px;
 }
 
-@media(max-width:500px){
+@media(max-width:600px){
 
     .page-sub .pic img {
         width: 100px;
