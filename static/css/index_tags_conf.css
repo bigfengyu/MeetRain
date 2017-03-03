@@ -41,3 +41,13 @@
     opacity: 1;
 
 }
+
+.tag5 .tagimage{
+    background:url("../img/liukanshan.png") repeat-x;
+    background-size: cover;
+}
+
+.tag6 .tagimage {
+    background:url("../img/history.jpeg") repeat-x;
+    background-size: cover;
+}
