@@ -3,7 +3,6 @@
 {% load custom_tags %}
 {% load listutil %}
 {% block head %}
-    <title>逢雨 | 标签</title>
     <link rel="stylesheet" href="{% static "css/index_tags.css" %}">
     <link rel="stylesheet" href="{% static "css/index_tags_conf.css" %}">
 {% endblock %}
@@ -11,9 +10,11 @@
 {% block main %}
 <div class="taglistwrapper">
     <div class="taglist clear">
-    {% for tagitem in category %}
-        {% include 'blog/elements/tagitem.html' %}
-    {% endfor %}
+    <!-- {% with category|partition_col:"2" as parts  %} -->
+            {% for tagitem in category %}
+                {% include 'blog/elements/tagitem.html' %}
+            {% endfor %}
+    <!-- {% endwith %} -->
     </div>
 </div>
 {% endblock %}

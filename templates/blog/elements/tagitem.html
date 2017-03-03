@@ -1,6 +1,6 @@
 {% load custom_tags %}
 {% with tagitem|orderbycustom as pages %}
-<div class="tagitem tag{{ forloop.counter }}" data-tag-id="{{ tagitem.id }}">
+<div class="tagitem tag{{ tagitem.order }}" data-tag-id="{{ tagitem.id }}">
     <div class="tagnamewrapper" >
         <div class="tagimage">
         </div>

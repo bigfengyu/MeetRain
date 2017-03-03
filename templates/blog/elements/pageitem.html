@@ -15,7 +15,7 @@
         <div class="page-sub">
             {% if page.hasImage %}
                 <div class="pic clear">
-                    <img width="192" src="{{ page.getCoverImageUrl }}">  <!--192 x 113-->
+                    <img src="{{ page.getCoverImageUrl }}">  <!--192 x 113-->
                 </div>
             {% endif %}
             <div class="summary {{ page.hasImage|yesno:"hasImage," }}">

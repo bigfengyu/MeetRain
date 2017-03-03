@@ -6,7 +6,8 @@
 {% endblock %}
 {% block main %}
     <a class="cover" href="{{ cover.page.get_url }}">
-        <img src="{{ cover.imageurl }}">
+        <div class="cover-image" style="background-image: url({{cover.imageurl}});"> 
+        </div>
         <div class="cover-title">
             {{ cover.page.title }}
         </div>

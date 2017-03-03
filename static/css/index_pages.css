@@ -4,9 +4,18 @@
     display: block;
     margin-bottom: 5px;
 }
-.cover img{
-    height: 275px;
+.cover-image{
+    height: 375px;
     width: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+@media(max-width:500px){
+    .cover-image{
+        height: 200px;
+    }
 }
 
 .cover-title{
@@ -81,10 +90,25 @@
     margin-top: 6px;
     margin-right: 14px;
 }
+.page-sub .pic img {
+    width: 192px;
+}
 
 .hasImage{
     padding-left:206px;
 }
+
+@media(max-width:500px){
+
+    .page-sub .pic img {
+        width: 100px;
+    }
+    .hasImage{
+        padding-left:0;
+    }
+}
+
+
 
 .page-sub .summary-up{
     font: 14px/24px 'Tahoma';
