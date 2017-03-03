@@ -1,22 +1,29 @@
 .taglistwrapper {
-    // text-align: center;
+    text-align: center;
     width: 100%;
     // padding: 0 20px;
 }
 
 .taglist{
+    columns:300px 3;
+    -moz-columns:300px 3; /* Firefox */
+    -webkit-columns:300px 3;
     font-size: 0;
+    // text-align: left;
 }
 
-.tagitem{
-    vertical-align: top;
-    width: 300px;;
-    display: inline-block;
-}
 
 .tagitem a,p{
     font-family: 'STHeiti','Microsoft YaHei';
     font-size: 16px;
+}
+
+.tagitem a {
+    color: #8A8A8A;
+}
+
+.tagitem a:hover{
+    color:#4073a2;
 }
 
 .tagitem h1{
@@ -30,6 +37,8 @@
     position: relative;
     display: inline-block;
     border: none;
+    cursor: pointer;
+    // float: left;
 }
 
 .lefttag{
