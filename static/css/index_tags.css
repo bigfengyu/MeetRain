@@ -51,8 +51,11 @@
     opacity: 0.3;
 }
 
+
 .tagimage:hover{
+    transition:opacity 0.5s linear;
     opacity: 1;
+
 }
 
 
